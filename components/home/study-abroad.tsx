@@ -89,7 +89,7 @@ function CountryCard({ country }: { country: Country }) {
       className="group block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all"
     >
       {/* Header with Flag */}
-      <div className="bg-gradient-to-r from-jirs-blue to-blue-600 p-4 flex items-center gap-3">
+      <div className="bg-gradient-to-r from-collegium-blue to-blue-600 p-4 flex items-center gap-3">
         <span className="text-4xl">{country.flag}</span>
         <div>
           <h3 className="text-lg font-bold text-white">{country.name}</h3>
@@ -123,7 +123,7 @@ function CountryCard({ country }: { country: Country }) {
         </div>
 
         {/* CTA */}
-        <div className="flex items-center text-jirs-blue font-medium text-sm group-hover:gap-2 transition-all">
+        <div className="flex items-center text-collegium-blue font-medium text-sm group-hover:gap-2 transition-all">
           <span>Explore Universities</span>
           <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
         </div>
@@ -139,7 +139,7 @@ export function StudyAbroad() {
         {/* Section Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <div className="flex items-center gap-2 text-jirs-blue mb-2">
+            <div className="flex items-center gap-2 text-collegium-blue mb-2">
               <Plane className="w-5 h-5" />
               <span className="text-sm font-medium uppercase tracking-wide">
                 Study Abroad
@@ -154,7 +154,7 @@ export function StudyAbroad() {
           </div>
           <Link
             href="/study-abroad"
-            className="hidden sm:flex items-center gap-1 text-jirs-blue font-medium hover:underline"
+            className="hidden sm:flex items-center gap-1 text-collegium-blue font-medium hover:underline"
           >
             View all countries
             <ArrowRight className="w-4 h-4" />
@@ -172,7 +172,7 @@ export function StudyAbroad() {
         <div className="mt-10 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-jirs-blue rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-collegium-blue rounded-lg flex items-center justify-center flex-shrink-0">
                 <GraduationCap className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -184,14 +184,14 @@ export function StudyAbroad() {
                 </p>
                 <Link
                   href="/study-abroad/scholarships"
-                  className="text-sm text-jirs-blue font-medium hover:underline mt-1 inline-block"
+                  className="text-sm text-collegium-blue font-medium hover:underline mt-1 inline-block"
                 >
                   Explore →
                 </Link>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-jirs-blue rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-collegium-blue rounded-lg flex items-center justify-center flex-shrink-0">
                 <FileText className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -201,14 +201,14 @@ export function StudyAbroad() {
                 </p>
                 <Link
                   href="/study-abroad/sop-guide"
-                  className="text-sm text-jirs-blue font-medium hover:underline mt-1 inline-block"
+                  className="text-sm text-collegium-blue font-medium hover:underline mt-1 inline-block"
                 >
                   Read Guide →
                 </Link>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-jirs-blue rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-collegium-blue rounded-lg flex items-center justify-center flex-shrink-0">
                 <Plane className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -218,7 +218,7 @@ export function StudyAbroad() {
                 </p>
                 <Link
                   href="/study-abroad/visa-guide"
-                  className="text-sm text-jirs-blue font-medium hover:underline mt-1 inline-block"
+                  className="text-sm text-collegium-blue font-medium hover:underline mt-1 inline-block"
                 >
                   Learn More →
                 </Link>

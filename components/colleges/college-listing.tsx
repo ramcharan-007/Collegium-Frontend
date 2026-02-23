@@ -14,6 +14,7 @@ import {
 } from "@/components/ui";
 import { CollegeCard } from "./college-card";
 import { FilterSidebar, MobileFilterDrawer } from "./filter-sidebar";
+import { FAQSection } from "@/components/seo";
 import type { CollegeCard as CollegeCardType } from "@/types";
 
 // Sample data
@@ -140,6 +141,18 @@ interface CollegeListingProps {
   colleges?: CollegeCardType[];
 }
 
+const collegesFAQs = [
+  { question: "How to choose the best college in India?", answer: "Consider factors like NIRF rankings, placement records (average and highest packages), faculty quality, infrastructure, location, course curriculum, accreditations (NAAC, NBA), and student reviews. Use Collegium's compare tool to evaluate colleges side by side." },
+  { question: "What are the top engineering colleges in India?", answer: "The top engineering colleges include IIT Bombay, IIT Delhi, IIT Madras, IIT Kanpur, IIT Kharagpur (by NIRF), BITS Pilani, NIT Trichy, and VIT Vellore. Rankings may vary based on the ranking agency (NIRF, QS, THE)." },
+  { question: "How do I get admission to top colleges?", answer: "Most top colleges require entrance exam scores (JEE for engineering, NEET for medical, CAT for MBA, CLAT for law). After qualifying, you participate in counselling rounds where seats are allotted based on rank, category, and preference." },
+  { question: "What is the average fee for engineering colleges in India?", answer: "Fees vary widely: Government IITs/NITs charge ₹2-10 lakhs for 4 years, while private colleges range from ₹5-25 lakhs. Top private universities like BITS Pilani can cost ₹20+ lakhs. Scholarships and education loans can help manage costs." },
+  { question: "What factors affect college placements?", answer: "Key factors include the college's industry connections, location (metro cities have better access), course specialization demand, alumni network strength, student skill levels, and the overall job market. Top colleges maintain 90%+ placement rates." },
+];
+
+function CollegesFAQ() {
+  return <FAQSection faqs={collegesFAQs} />;
+}
+
 export function CollegeListing({
   title = "All Colleges",
   description = "Explore top colleges across India",
@@ -256,7 +269,7 @@ export function CollegeListing({
                       className={cn(
                         "p-2 rounded",
                         viewMode === "list"
-                          ? "bg-jirs-blue text-white"
+                          ? "bg-collegium-blue text-white"
                           : "text-gray-500 hover:bg-gray-100",
                       )}
                     >
@@ -267,7 +280,7 @@ export function CollegeListing({
                       className={cn(
                         "p-2 rounded",
                         viewMode === "grid"
-                          ? "bg-jirs-blue text-white"
+                          ? "bg-collegium-blue text-white"
                           : "text-gray-500 hover:bg-gray-100",
                       )}
                     >
@@ -308,7 +321,7 @@ export function CollegeListing({
                   className={cn(
                     "w-10 h-10 rounded-lg font-medium text-sm transition-colors",
                     page === 1
-                      ? "bg-jirs-blue text-white"
+                      ? "bg-collegium-blue text-white"
                       : "text-gray-600 hover:bg-gray-100",
                   )}
                 >
@@ -329,7 +342,7 @@ export function CollegeListing({
 
       {/* Compare Bar */}
       {compareList.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-jirs-blue text-white py-4 shadow-lg z-40">
+        <div className="fixed bottom-0 left-0 right-0 bg-collegium-blue text-white py-4 shadow-lg z-40">
           <div className="container flex items-center justify-between">
             <div className="flex items-center gap-4">
               <span className="font-medium">
@@ -363,6 +376,11 @@ export function CollegeListing({
         onFilterChange={handleFilterChange}
         onClearAll={clearAllFilters}
       />
+
+      {/* FAQ Section */}
+      <div className="container pb-10">
+        <CollegesFAQ />
+      </div>
     </div>
   );
 }

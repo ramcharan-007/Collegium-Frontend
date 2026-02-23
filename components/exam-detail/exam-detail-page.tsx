@@ -168,7 +168,7 @@ function DateCard({
         {status === "completed" ? (
           <Check className="w-5 h-5 text-green-600" />
         ) : (
-          <Calendar className="w-5 h-5 text-jirs-blue" />
+          <Calendar className="w-5 h-5 text-collegium-blue" />
         )}
       </div>
       <div className="flex-1">
@@ -197,7 +197,7 @@ export function ExamDetailPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-jirs-blue to-blue-700 text-white">
+      <div className="bg-gradient-to-br from-collegium-blue to-blue-700 text-white">
         <div className="container py-8 lg:py-12">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-blue-200 mb-6">
@@ -266,7 +266,7 @@ export function ExamDetailPage() {
         <div className="container">
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
             <div className="text-center">
-              <div className="text-lg font-bold text-jirs-blue">
+              <div className="text-lg font-bold text-collegium-blue">
                 {examData.examPattern.totalQuestions}
               </div>
               <div className="text-xs text-gray-500">Questions</div>
@@ -362,7 +362,7 @@ export function ExamDetailPage() {
                     </h2>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                        <Calendar className="w-5 h-5 text-jirs-blue" />
+                        <Calendar className="w-5 h-5 text-collegium-blue" />
                         <div>
                           <div className="text-sm text-gray-500">
                             Conducting Body
@@ -373,14 +373,14 @@ export function ExamDetailPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                        <FileText className="w-5 h-5 text-jirs-blue" />
+                        <FileText className="w-5 h-5 text-collegium-blue" />
                         <div>
                           <div className="text-sm text-gray-500">Exam Mode</div>
                           <div className="font-medium">{examData.mode}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                        <Clock className="w-5 h-5 text-jirs-blue" />
+                        <Clock className="w-5 h-5 text-collegium-blue" />
                         <div>
                           <div className="text-sm text-gray-500">Frequency</div>
                           <div className="font-medium">
@@ -389,7 +389,7 @@ export function ExamDetailPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                        <MapPin className="w-5 h-5 text-jirs-blue" />
+                        <MapPin className="w-5 h-5 text-collegium-blue" />
                         <div>
                           <div className="text-sm text-gray-500">
                             Exam Level
@@ -506,7 +506,7 @@ export function ExamDetailPage() {
                               </td>
                             </tr>
                           ))}
-                          <tr className="bg-jirs-blue/5 font-medium">
+                          <tr className="bg-collegium-blue/5 font-medium">
                             <td className="px-4 py-3 text-gray-900">Total</td>
                             <td className="px-4 py-3 text-center text-gray-900">
                               {examData.examPattern.totalQuestions}
@@ -587,7 +587,7 @@ export function ExamDetailPage() {
                           className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                         >
                           <div className="flex items-center gap-3">
-                            <span className="w-8 h-8 bg-jirs-blue text-white rounded-full flex items-center justify-center text-sm font-bold">
+                            <span className="w-8 h-8 bg-collegium-blue text-white rounded-full flex items-center justify-center text-sm font-bold">
                               {index + 1}
                             </span>
                             <span className="font-medium text-gray-900">
@@ -613,7 +613,7 @@ export function ExamDetailPage() {
           {/* Sidebar */}
           <div className="w-full lg:w-80 shrink-0 space-y-6">
             {/* Apply Now Card */}
-            <Card className="border-jirs-blue border-2">
+            <Card className="border-collegium-blue border-2">
               <CardContent className="p-6">
                 <h3 className="font-bold text-gray-900 mb-2">
                   {examData.name} {examData.year} Application
@@ -655,7 +655,7 @@ export function ExamDetailPage() {
                       href={link.href}
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                     >
-                      <link.icon className="w-5 h-5 text-jirs-blue" />
+                      <link.icon className="w-5 h-5 text-collegium-blue" />
                       <span className="text-gray-700">{link.label}</span>
                     </Link>
                   ))}

@@ -2,26 +2,29 @@
 
 ## Complete Product Design & Technical Architecture Document
 
-**Version:** 1.0  
+**Version:** 2.0  
 **Date:** February 2026  
-**Client:** JIRS (Jain International Residential School)
+**Client:** Collegium  
+**Changelog:** v2.0 — Updated based on Collegedunia.com gap analysis (see [MISSING_FEATURES.md](MISSING_FEATURES.md))
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Executive Summary](#1-executive-summary)
+1. [Executive Summary](#1-executive-summary) _(updated in v2.0 — includes gap analysis status)_
 2. [Information Architecture](#2-information-architecture)
 3. [Page-by-Page Design Specifications](#3-page-by-page-design-specifications)
 4. [Design System](#4-design-system)
-5. [Component Library](#5-component-library)
+5. [Component Library](#5-component-library) _(updated in v2.0 — 20+ new planned components)_
 6. [Technical Architecture](#6-technical-architecture)
 7. [Data Models](#7-data-models)
 8. [API Design](#8-api-design)
 9. [SEO Strategy](#9-seo-strategy)
 10. [Performance & Scalability](#10-performance--scalability)
 11. [Monetization & Business Logic](#11-monetization--business-logic)
-12. [Implementation Roadmap](#12-implementation-roadmap)
+12. [Implementation Roadmap](#12-implementation-roadmap) _(updated in v2.0 — revised phases)_
+
+📄 **Related:** [MISSING_FEATURES.md](MISSING_FEATURES.md) — Detailed gap analysis (37 missing features)
 
 ---
 
@@ -48,6 +51,35 @@ Build a modern, scalable college discovery and comparison platform that helps st
 - ✅ **Side-by-side Comparison** of colleges
 - ✅ **Verified Student Reviews** with incentives
 - ✅ **Study Abroad** guidance and college listings
+
+### 1.4 Gap Analysis Status (v2.0)
+
+A comprehensive feature audit was conducted against [Collegedunia.com](https://collegedunia.com/). **37 missing features** were identified across 7 categories. Full details are in [MISSING_FEATURES.md](MISSING_FEATURES.md).
+
+| Category | Missing Items | High Priority |
+|----------|--------------|---------------|
+| Homepage Sections | 10 | 4 |
+| Header & Navigation | 4 | 2 |
+| College Detail Enhancements | 6 | 3 |
+| New Pages & Tools | 5 | 2 |
+| Functional / UX Features | 6 | 3 |
+| Footer Enhancements | 2 | 1 |
+| SEO & Content Infrastructure | 4 | 3 |
+| **Total** | **37** | **18** |
+
+#### Current Implementation Status
+
+| Layer | Status |
+|-------|--------|
+| Frontend pages (25 routes) | ✅ Implemented (mock data) |
+| UI Component Library | ✅ ~20 components |
+| Backend / API | ❌ Not started |
+| Database | ❌ Not started |
+| Authentication | ❌ Forms exist, non-functional |
+| Lead Capture (Apply/Brochure) | ❌ Buttons exist, non-functional |
+| SEO (JSON-LD, meta, sitemap) | ❌ Not started |
+| Analytics | ❌ Not started |
+| Admin Panel | ❌ Not started |
 
 ---
 
@@ -441,10 +473,15 @@ COLLEGIUM PLATFORM
 | Featured     | `<CollegeCarousel>`  | Featured/sponsored colleges         |
 | Study Places | `<CityChips>`        | Cities with counts                  |
 | Courses      | `<CourseExplorer>`   | Courses by level                    |
+| Board Exams  | `<BoardExamsSection>`| CBSE Class 10/12 links              |
 | News         | `<NewsSection>`      | Recent news by category             |
 | Study Abroad | `<CountryCards>`     | Countries with stats                |
-| Newsletter   | `<NewsletterForm>`   | -                                   |
-| Footer       | `<GlobalFooter>`     | Static links                        |
+| Admission    | `<AdmissionSection>` | Active admissions by course         |
+| Location     | `<CollegesByLocation>`| States/cities with counts          |
+| Newsletter   | `<NewsletterForm>`   | Email + phone subscription          |
+| Footer       | `<GlobalFooter>`     | Comprehensive SEO link sections     |
+
+> **⚠️ Implementation Gap (v2.0):** Of the 15 homepage sections above, only 7 are currently implemented: Header, Hero, Study Goals, Exams, Predictor, Top 10, Featured, Study Abroad. The remaining 8 sections are documented in [MISSING_FEATURES.md](MISSING_FEATURES.md) items A-1 through A-10.
 
 ---
 
@@ -880,13 +917,13 @@ interface FilterConfig {
 
 ## 4. Design System
 
-### 4.1 Color Palette (JIRS Brand-Inspired)
+### 4.1 Color Palette (Collegium Brand-Inspired)
 
 ```css
 :root {
   /* Primary Colors */
-  --jirs-blue: #001c54; /* JAIN Blue - Primary */
-  --jirs-yellow: #f8c300; /* JAIN Yellow - Accent */
+  --collegium-blue: #001c54; /* Collegium Blue - Primary */
+  --collegium-yellow: #f8c300; /* Collegium Yellow - Accent */
 
   /* Extended Palette */
   --blue-dark: #001039;
@@ -929,7 +966,7 @@ interface FilterConfig {
 
 ```css
 :root {
-  /* Font Families (as per JIRS guidelines) */
+  /* Font Families (as per Collegium guidelines) */
   --font-primary: "Arial", "Helvetica", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --font-display: "Inter", sans-serif; /* For modern headings */
@@ -1028,7 +1065,8 @@ interface FilterConfig {
 ├── Icon/
 ├── Spinner/
 ├── Skeleton/
-└── Tag/
+├── Tag/
+└── Breadcrumb/               ← NEW (E-4)
 
 // molecules/
 ├── SearchBar/
@@ -1041,7 +1079,10 @@ interface FilterConfig {
 ├── Breadcrumb/
 ├── Pagination/
 ├── StarRating/
-└── CompareButton/
+├── CompareButton/
+├── NotificationBell/          ← NEW (E-6)
+├── CounsellingCTA/            ← NEW (B-1)
+└── FloatingCompareBar/        ← NEW (E-3)
 
 // organisms/
 ├── CollegeCard/
@@ -1054,7 +1095,29 @@ interface FilterConfig {
 ├── PredictorWidget/
 ├── NewsCard/
 ├── RankingsTable/
-└── PlacementChart/
+├── PlacementChart/
+├── ApplyNowModal/             ← NEW (E-1)
+├── BrochureDownloadModal/     ← NEW (E-2)
+├── QASection/                 ← NEW (C-4)
+├── AdmissionTab/              ← NEW (C-1)
+├── ScholarshipTab/            ← NEW (C-2)
+├── HostelTab/                 ← NEW (C-3)
+├── NewsletterForm/            ← NEW (A-8)
+├── StructuredData/            ← NEW (G-1)
+└── FAQSection/                ← NEW (G-4)
+
+// homepage sections/
+├── ExploreProgramsTabs/       ← NEW (A-1)
+├── RankingsSection/           ← NEW (A-2)
+├── CourseExplorer/            ← NEW (A-4)
+├── TopStudyPlaces/            ← NEW (A-5)
+├── AdmissionSection/          ← NEW (A-6)
+├── BoardExamsSection/         ← NEW (A-7)
+└── CollegesByLocation/        ← NEW (A-9)
+
+// tools/
+├── CourseFinderWizard/        ← NEW (D-1)
+└── RecentlyViewed/            ← NEW (E-5)
 
 // templates/
 ├── ListingPageLayout/
@@ -2708,82 +2771,151 @@ const ctaAnalytics = {
 
 ## 12. Implementation Roadmap
 
-### Phase 1: Foundation (Weeks 1-4)
+> **Updated in v2.0** — Roadmap revised to incorporate the 37 missing features identified in the [gap analysis](MISSING_FEATURES.md). Phase 1 now reflects that basic frontend scaffolding is already complete (25 routes with mock data).
+
+### Phase 0: Current State (✅ Complete)
 
 ```markdown
-Week 1-2: Setup & Core Infrastructure
+Already Implemented:
 
-- [ ] Project setup (Next.js, TypeScript, Tailwind)
-- [ ] Database schema & Prisma setup
-- [ ] Design system & component library foundation
-- [ ] Authentication system
-- [ ] Basic API structure
+- [x] Project setup (Next.js, TypeScript, Tailwind)
+- [x] Design system & component library (~20 UI components)
+- [x] Home page (7 of 15 sections)
+- [x] College listing with filter sidebar
+- [x] College detail page (7 sections: Overview, Courses, Placements, Cutoffs, Reviews, Gallery, Facilities)
+- [x] Exam listing & detail pages
+- [x] Course listing & detail pages
+- [x] College predictor (landing + exam-specific)
+- [x] Compare colleges page
+- [x] Rankings listing
+- [x] Reviews listing + Write Review
+- [x] News listing & article detail
+- [x] Study abroad (landing + country detail)
+- [x] Auth pages (Login, Signup, Forgot Password) — forms only, non-functional
+- [x] Dashboard, About, Contact, Careers, Advertise, Privacy, Terms
+- [x] Global search
+- [x] responsive design
+- [x] Theme system (light/dark/system)
 
-Week 3-4: Core Pages (MVP)
-
-- [ ] Home page
-- [ ] College listing with filters
-- [ ] College detail page (basic tabs)
-- [ ] Search functionality
-- [ ] Responsive design
+NOT implemented:
+- Database, API, Authentication, Lead capture, SEO, Analytics, Admin panel
+- All data is hardcoded mock data
 ```
 
-### Phase 2: Feature Development (Weeks 5-10)
+### Phase 1: Revenue-Critical Features (Weeks 1-3)
 
 ```markdown
-Week 5-6: College Features
+Week 1: Lead Capture & Monetization (Gap Items E-1, E-2, B-1)
 
-- [ ] All college detail tabs
-- [ ] Reviews system
-- [ ] Comparison tool
-- [ ] Save/Bookmark functionality
+- [ ] Apply Now modal with lead capture form
+- [ ] Download Brochure gated flow with lead capture
+- [ ] Need Counselling CTA in header
+- [ ] Lead tracking infrastructure (even if localStorage/mock initially)
 
-Week 7-8: Exam & Course Features
+Week 2: SEO Foundation (Gap Items G-1, G-2, G-3, G-4, E-4)
 
-- [ ] Exam listing & detail pages
-- [ ] Course listing & detail pages
-- [ ] College predictor
-- [ ] Rankings pages
+- [ ] JSON-LD structured data component (Organization, BreadcrumbList,
+      EducationalOrganization, Course, Review, FAQ, Article)
+- [ ] Dynamic meta tags via generateMetadata() on all page routes
+- [ ] Open Graph & Twitter Card meta tags
+- [ ] sitemap.ts & robots.ts (Next.js conventions)
+- [ ] Breadcrumb component (reusable, with BreadcrumbList schema)
+- [ ] FAQ section component with FAQ schema markup
 
-Week 9-10: User Features
+Week 3: Footer & Navigation (Gap Items F-1, B-4)
 
-- [ ] User dashboard
-- [ ] Profile management
-- [ ] Application tracking
-- [ ] Notifications
+- [ ] Comprehensive footer with 100+ SEO links (Top Colleges, Exams, etc.)
+- [ ] Courses mega-menu in header navigation
+- [ ] Course Finder nav link
 ```
 
-### Phase 3: Advanced Features (Weeks 11-14)
+### Phase 2: Homepage Completion (Weeks 4-5)
 
 ```markdown
-Week 11-12: Content & SEO
+Week 4: Missing Homepage Sections — Part 1 (Gap Items A-1, A-2, A-4, A-10)
 
-- [ ] News/Blog system
-- [ ] SEO optimization
-- [ ] Sitemap generation
-- [ ] Schema markup
+- [ ] Explore Programs horizontal tab bar
+- [ ] College Rankings multi-agency section
+- [ ] Explore Courses tabbed section (Bachelors/Masters/Doctorate)
+- [ ] Featured Colleges carousel upgrade (auto-scroll, logos)
 
+Week 5: Missing Homepage Sections — Part 2 (Gap Items A-5, A-6, A-8, A-9)
+
+- [ ] Top Study Places city chip nav
+- [ ] Admission 2026 quick-access section
+- [ ] Newsletter subscription form
+- [ ] Find Colleges by Location grid
+- [ ] CBSE Board Exam section (A-7, low priority, can defer)
+```
+
+### Phase 3: College Detail & New Pages (Weeks 6-8)
+
+```markdown
+Week 6: College Detail Missing Tabs (Gap Items C-1, C-2, C-3, C-4, C-5, C-6)
+
+- [ ] Admission tab (criteria, dates, process, documents)
+- [ ] Scholarship tab (scholarships per college)
+- [ ] Hostel & Campus Life tab (rooms, fees, amenities, photos)
+- [ ] Q&A / Discussion section
+- [ ] Related News sidebar widget
+- [ ] Distance Learning / Online Mode badges
+
+Week 7: New Listing Pages (Gap Items D-2, D-3)
+
+- [ ] Category-specific listings: /medical-colleges, /law-colleges,
+      /arts-colleges, /commerce-colleges, /science-colleges,
+      /design-colleges, /pharmacy-colleges
+- [ ] City-specific listings: /bangalore-colleges, /delhi-colleges,
+      /mumbai-colleges, etc. (dynamic route or top-20 static)
+
+Week 8: New Tools & Pages (Gap Items D-1, D-4, D-5)
+
+- [ ] Course Finder wizard (/course-finder)
+- [ ] Board Exam pages (/board-exams, /board-exams/cbse-class-12)
+- [ ] Admission guides (/courses/{slug}/admission-2026)
+```
+
+### Phase 4: UX & Backend Foundation (Weeks 9-12)
+
+```markdown
+Week 9-10: Functional UX (Gap Items E-3, E-5, E-6, B-2, B-3)
+
+- [ ] Compare state persistence (Zustand + floating compare bar)
+- [ ] Recently Viewed Colleges (localStorage widget)
+- [ ] Notification system (bell icon + dropdown)
+- [ ] City-based search scope in global search
+- [ ] Write Review incentive banner
+
+Week 11-12: Backend & Database Setup
+
+- [ ] Database schema & Prisma setup (using models from Section 7)
+- [ ] Authentication system (NextAuth.js v5)
+- [ ] Core API endpoints (colleges, courses, exams, reviews)
+- [ ] Search integration (Meilisearch)
+- [ ] Replace all hardcoded mock data with API calls
+```
+
+### Phase 5: Admin, Analytics & Launch (Weeks 13-16)
+
+```markdown
 Week 13-14: Admin & Analytics
 
 - [ ] Admin dashboard
-- [ ] Lead management
-- [ ] Content management
-- [ ] Analytics integration
-```
+- [ ] Lead management system
+- [ ] Content management (colleges, courses, exams, news)
+- [ ] Analytics integration (GA4, Mixpanel)
+- [ ] Review moderation system
 
-### Phase 4: Optimization & Launch (Weeks 15-16)
-
-```markdown
 Week 15: Performance & Testing
 
-- [ ] Performance optimization
+- [ ] Performance optimization (Core Web Vitals targets)
 - [ ] Load testing
 - [ ] Security audit
 - [ ] Bug fixes
 
 Week 16: Launch Preparation
 
-- [ ] Data migration
+- [ ] Data migration / seeding (25,000+ colleges)
 - [ ] Final testing
 - [ ] Documentation
 - [ ] Soft launch & monitoring
@@ -2867,10 +2999,19 @@ RAZORPAY_KEY_SECRET=...
 ---
 
 **Document Prepared By:** Senior Product Designer + Full-Stack Architect  
-**For:** JIRS Collegium Platform  
-**Version:** 1.0  
+**For:** Collegium Platform  
+**Version:** 2.0  
 **Last Updated:** February 2026
 
 ---
 
-_This document serves as the complete blueprint for building the Collegium platform. All specifications are based on analysis of Collegedunia.com and tailored to JIRS brand guidelines._
+### Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | Feb 2026 | Initial architecture document |
+| 2.0 | Feb 2026 | Gap analysis against Collegedunia.com: added Section 1.4 (implementation status), updated Component Library (Section 5.1) with 20+ new planned components, revised Implementation Roadmap (Section 12) with Phase 0 baseline and reprioritized phases, added cross-references to [MISSING_FEATURES.md](MISSING_FEATURES.md) |
+
+---
+
+_This document serves as the complete blueprint for building the Collegium platform. All specifications are based on analysis of Collegedunia.com and tailored to Collegium brand guidelines. See [MISSING_FEATURES.md](MISSING_FEATURES.md) for the detailed feature gap analysis._

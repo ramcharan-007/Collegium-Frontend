@@ -112,7 +112,7 @@ export function StudyGoalGrid() {
           </div>
           <Link
             href="/colleges"
-            className="hidden sm:flex items-center gap-1 text-jirs-blue font-medium hover:underline"
+            className="hidden sm:flex items-center gap-1 text-collegium-blue font-medium hover:underline"
           >
             View all
             <ArrowRight className="w-4 h-4" />
@@ -133,7 +133,7 @@ export function StudyGoalGrid() {
             >
               <div className="flex flex-col items-start">
                 <div className="mb-3">{goal.icon}</div>
-                <h3 className="font-semibold text-gray-900 group-hover:text-jirs-blue transition-colors">
+                <h3 className="font-semibold text-gray-900 group-hover:text-collegium-blue transition-colors">
                   {goal.label}
                 </h3>
                 <p className="text-sm text-gray-500 mt-1">
@@ -149,7 +149,7 @@ export function StudyGoalGrid() {
         <div className="mt-6 text-center sm:hidden">
           <Link
             href="/colleges"
-            className="inline-flex items-center gap-1 text-jirs-blue font-medium"
+            className="inline-flex items-center gap-1 text-collegium-blue font-medium"
           >
             View all categories
             <ArrowRight className="w-4 h-4" />

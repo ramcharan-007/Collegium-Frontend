@@ -1,1441 +1,804 @@
-"use client";"use client";
+"use client";
 
+import * as React from "react";
+import Link from "next/link";
+import {
+  Star,
+  MapPin,
+  Award,
+  Download,
+  Share2,
+  Heart,
+  Check,
+  Building2,
+  GraduationCap,
+  Users,
+  Calendar,
+  Globe,
+  Phone,
+  Mail,
+  ExternalLink,
+  ChevronRight,
+  Play,
+  Briefcase,
+  IndianRupee,
+  TrendingUp,
+  BarChart3,
+  BookOpen,
+  Camera,
+  MessageSquare,
+  ChevronUp,
+  ThumbsUp,
+  Quote,
+} from "lucide-react";
+import { cn, formatCurrency } from "@/lib/utils";
+import { Button, Badge, Card, CardContent } from "@/components/ui";
+import { ApplyNowModal, BrochureDownloadModal } from "@/components/modals";
 
-
-import * as React from "react";import * as React from "react";
-
-import Link from "next/link";import Link from "next/link";
-
-import {import {
-
-  Star,  Star,
-
-  MapPin,  MapPin,
-
-  Award,  Award,
-
-  Download,  Download,
-
-  Share2,  Share2,
-
-  Heart,  Heart,
-
-  Check,  Check,
-
-  Building2,  Building2,
-
-  GraduationCap,  GraduationCap,
-
-  Users,  Users,
-
-  Calendar,  Calendar,
-
-  Globe,  Globe,
-
-  Phone,  Phone,
-
-  Mail,  Mail,
-
-  ExternalLink,  ExternalLink,
-
-  ChevronRight,  ChevronRight,
-
-  Play,  Play,
-
-  Briefcase,  Briefcase,
-
-  IndianRupee,  IndianRupee,
-
-  TrendingUp,  TrendingUp,
-
-  BarChart3,  BarChart3,
-
-  BookOpen,} from "lucide-react";
-
-  Camera,import { cn, formatCurrency } from "@/lib/utils";
-
-  MessageSquare,import {
-
-  ChevronUp,  Button,
-
-  ThumbsUp,  Badge,
-
-  Quote,  Tabs,
-
-} from "lucide-react";  TabsListUnderline,
-
-import { cn, formatCurrency } from "@/lib/utils";  TabsTriggerUnderline,
-
-import { Button, Badge, Card, CardContent } from "@/components/ui";  TabsContent,
-
-  Card,
-
-// Mock data for college detail  CardContent,
-
-const collegeData = {} from "@/components/ui";
-
+// Mock data for college detail
+const collegeData = {
   id: "1",
-
-  slug: "iit-bombay",// Mock data for college detail
-
-  name: "Indian Institute of Technology Bombay",const collegeData = {
-
-  shortName: "IIT Bombay",  id: "1",
-
-  tagline: "Where Innovation Meets Excellence",  slug: "iit-bombay",
-
-  logo: "/colleges/iit-bombay-logo.png",  name: "Indian Institute of Technology Bombay",
-
-  coverImage:  shortName: "IIT Bombay",
-
-    "https://images.unsplash.com/photo-1562774053-701939374585?w=1920&q=80",  tagline: "Where Innovation Meets Excellence",
-
-  galleryImages: [  logo: "/colleges/iit-bombay-logo.png",
-
-    "https://images.unsplash.com/photo-1562774053-701939374585?w=600",  coverImage: "/colleges/iit-bombay-cover.jpg",
-
-    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600",  city: "Mumbai",
-
-    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600",  state: "Maharashtra",
-
-    "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=600",  address: "Powai, Mumbai, Maharashtra 400076",
-
-    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600",  establishedYear: 1958,
-
-    "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=600",  type: "Government",
-
-  ],  website: "https://www.iitb.ac.in",
-
-  city: "Mumbai",  email: "admissions@iitb.ac.in",
-
-  state: "Maharashtra",  phone: "+91-22-2576-7001",
-
-  address: "Powai, Mumbai, Maharashtra 400076",  rating: 4.5,
-
-  establishedYear: 1958,  reviewCount: 403,
-
-  type: "Government",  cdScore: 9.2,
-
-  website: "https://www.iitb.ac.in",  rankings: [
-
-  email: "admissions@iitb.ac.in",    { agency: "NIRF", rank: 3, year: 2024, category: "Engineering" },
-
-  phone: "+91-22-2576-7001",    { agency: "QS World", rank: 149, year: 2024, category: "Overall" },
-
-  rating: 4.5,    { agency: "THE World", rank: 251, year: 2024, category: "Overall" },
-
-  reviewCount: 403,  ],
-
-  cdScore: 9.2,  approvals: ["AICTE", "UGC", "MHRD"],
-
-  rankings: [  accreditations: [
-
-    { agency: "NIRF", rank: 3, year: 2024, category: "Engineering" },    { agency: "NAAC", grade: "A++", score: 3.67 },
-
-    { agency: "QS World", rank: 149, year: 2024, category: "Overall" },    { agency: "NBA", grade: "Accredited", score: null },
-
-    { agency: "THE World", rank: 251, year: 2024, category: "Overall" },  ],
-
-  ],  highlights: [
-
-  approvals: ["AICTE", "UGC", "MHRD"],    { label: "Established", value: "1958" },
-
-  accreditations: [    { label: "Type", value: "Government" },
-
-    { agency: "NAAC", grade: "A++", score: 3.67 },    { label: "Campus Size", value: "550 Acres" },
-
-    { agency: "NBA", grade: "Accredited", score: null },    { label: "Total Students", value: "16,000+" },
-
-  ],    { label: "Faculty", value: "680+" },
-
-  highlights: [    { label: "Courses Offered", value: "147" },
-
-    { label: "Established", value: "1958", icon: Calendar },  ],
-
-    { label: "Type", value: "Government", icon: Building2 },  fees: {
-
-    { label: "Campus Size", value: "550 Acres", icon: MapPin },    btech: { amount: 882500, duration: "4 Years" },
-
-    { label: "Total Students", value: "16,000+", icon: Users },    mtech: { amount: 235000, duration: "2 Years" },
-
-    { label: "Faculty", value: "680+", icon: GraduationCap },    phd: { amount: 50000, duration: "5 Years" },
-
-    { label: "Courses Offered", value: "147", icon: BookOpen },    mba: { amount: 1500000, duration: "2 Years" },
-
-  ],  },
-
-  fees: {  placement: {
-
-    btech: { amount: 882500, duration: "4 Years" },    year: 2024,
-
-    mtech: { amount: 235000, duration: "2 Years" },    studentsPlaced: 1450,
-
-    phd: { amount: 50000, duration: "5 Years" },    totalStudents: 1520,
-
-    mba: { amount: 1500000, duration: "2 Years" },    placementRate: 95.4,
-
-  },    averagePackage: 2350000,
-
-  placement: {    medianPackage: 2100000,
-
-    year: 2024,    highestPackage: 10000000,
-
-    studentsPlaced: 1450,    topRecruiters: [
-
-    totalStudents: 1520,      "Google",
-
-    placementRate: 95.4,      "Microsoft",
-
-    averagePackage: 2350000,      "Amazon",
-
-    medianPackage: 2100000,      "Goldman Sachs",
-
-    highestPackage: 10000000,      "McKinsey",
-
-    topRecruiters: [      "BCG",
-
-      "Google",      "Apple",
-
-      "Microsoft",      "Meta",
-
-      "Amazon",    ],
-
-      "Goldman Sachs",  },
-
-      "McKinsey",  courses: [
-
-      "BCG",    {
-
-      "Apple",      name: "B.Tech",
-
-      "Meta",      specializations: 12,
-
-      "Uber",      fees: 882500,
-
-      "Adobe",      duration: "4 Years",
-
-      "Flipkart",      seats: 1200,
-
-      "Morgan Stanley",    },
-
-    ],    {
-
-  },      name: "M.Tech",
-
-  courses: [      specializations: 35,
-
-    {      fees: 235000,
-
-      name: "B.Tech",      duration: "2 Years",
-
-      specializations: [      seats: 1800,
-
-        "Computer Science",    },
-
-        "Electrical Engineering",    {
-
-        "Mechanical Engineering",      name: "PhD",
-
-        "Civil Engineering",      specializations: 28,
-
-        "Chemical Engineering",      fees: 50000,
-
-        "Aerospace Engineering",      duration: "3-5 Years",
-
-      ],      seats: 400,
-
-      fees: 882500,    },
-
-      duration: "4 Years",    {
-
-      seats: 1200,      name: "MBA",
-
-      eligibility: "JEE Advanced",      specializations: 3,
-
-    },      fees: 1500000,
-
-    {      duration: "2 Years",
-
-      name: "M.Tech",      seats: 120,
-
-      specializations: [    },
-
-        "AI & ML",    {
-
-        "Data Science",      name: "M.Sc",
-
-        "VLSI Design",      specializations: 8,
-
-        "Structural Engineering",      fees: 25000,
-
-      ],      duration: "2 Years",
-
-      fees: 235000,      seats: 200,
-
-      duration: "2 Years",    },
-
-      seats: 1800,  ],
-
-      eligibility: "GATE",};
-
-    },
-
-    {function StatCard({
-
-      name: "PhD",  icon: Icon,
-
-      specializations: ["Research Programs across all departments"],  label,
-
-      fees: 50000,  value,
-
-      duration: "3-5 Years",  subValue,
-
-      seats: 400,  className,
-
-      eligibility: "GATE/NET + Interview",}: {
-
-    },  icon: React.ElementType;
-
-    {  label: string;
-
-      name: "MBA",  value: string;
-
-      specializations: ["Finance", "Marketing", "Operations"],  subValue?: string;
-
-      fees: 1500000,  className?: string;
-
-      duration: "2 Years",}) {
-
-      seats: 120,  return (
-
-      eligibility: "CAT",    <div
-
-    },      className={cn(
-
-    {        "bg-white rounded-xl border border-gray-200 p-4",
-
-      name: "M.Sc",        className,
-
-      specializations: ["Physics", "Chemistry", "Mathematics", "Biology"],      )}
-
-      fees: 25000,    >
-
-      duration: "2 Years",      <div className="flex items-center gap-3">
-
-      seats: 200,        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-
-      eligibility: "JAM",          <Icon className="w-5 h-5 text-jirs-blue" />
-
-    },        </div>
-
-  ],        <div>
-
-  cutoffs: [          <div className="text-sm text-gray-500">{label}</div>
-
-    {          <div className="font-bold text-gray-900">{value}</div>
-
-      course: "B.Tech Computer Science",          {subValue && <div className="text-xs text-gray-400">{subValue}</div>}
-
-      exam: "JEE Advanced 2024",        </div>
-
-      general: 68,      </div>
-
-      obc: 45,    </div>
-
-      sc: 18,  );
-
-      st: 8,}
-
-    },
-
-    {export function CollegeDetailPage() {
-
-      course: "B.Tech Electrical Engineering",  const [activeTab, setActiveTab] = React.useState("overview");
-
-      exam: "JEE Advanced 2024",
-
-      general: 285,  return (
-
-      obc: 180,    <div className="min-h-screen bg-gray-50">
-
-      sc: 65,      {/* Hero Section */}
-
-      st: 28,      <div className="bg-jirs-blue text-white">
-
-    },        <div className="container py-8">
-
-    {          {/* Breadcrumb */}
-
-      course: "B.Tech Mechanical Engineering",          <nav className="flex items-center gap-2 text-sm text-blue-200 mb-6">
-
-      exam: "JEE Advanced 2024",            <Link href="/" className="hover:text-white">
-
-      general: 520,              Home
-
-      obc: 350,            </Link>
-
-      sc: 120,            <ChevronRight className="w-4 h-4" />
-
-      st: 55,            <Link href="/colleges" className="hover:text-white">
-
-    },              Colleges
-
-    {            </Link>
-
-      course: "B.Tech Civil Engineering",            <ChevronRight className="w-4 h-4" />
-
-      exam: "JEE Advanced 2024",            <span className="text-white">{collegeData.shortName}</span>
-
-      general: 1250,          </nav>
-
-      obc: 850,
-
-      sc: 320,          <div className="flex flex-col lg:flex-row gap-6">
-
-      st: 145,            {/* Logo */}
-
-    },            <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white rounded-xl flex items-center justify-center text-3xl font-bold text-jirs-blue shrink-0">
-
-  ],              {collegeData.name.charAt(0)}
-
-  reviews: [            </div>
-
+  slug: "iit-bombay",
+  name: "Indian Institute of Technology Bombay",
+  shortName: "IIT Bombay",
+  tagline: "Where Innovation Meets Excellence",
+  logo: "/colleges/iit-bombay-logo.png",
+  coverImage:
+    "https://images.unsplash.com/photo-1562774053-701939374585?w=1920&q=80",
+  galleryImages: [
+    "https://images.unsplash.com/photo-1562774053-701939374585?w=600",
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600",
+    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600",
+    "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=600",
+    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600",
+    "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=600",
+  ],
+  city: "Mumbai",
+  state: "Maharashtra",
+  address: "Powai, Mumbai, Maharashtra 400076",
+  establishedYear: 1958,
+  type: "Government",
+  website: "https://www.iitb.ac.in",
+  email: "admissions@iitb.ac.in",
+  phone: "+91-22-2576-7001",
+  rating: 4.5,
+  reviewCount: 403,
+  cdScore: 9.2,
+  rankings: [
+    { agency: "NIRF", rank: 3, year: 2024, category: "Engineering" },
+    { agency: "QS World", rank: 149, year: 2024, category: "Overall" },
+    { agency: "THE World", rank: 251, year: 2024, category: "Overall" },
+  ],
+  approvals: ["AICTE", "UGC", "MHRD"],
+  accreditations: [
+    { agency: "NAAC", grade: "A++", score: 3.67 },
+    { agency: "NBA", grade: "Accredited", score: null },
+  ],
+  highlights: [
+    { label: "Established", value: "1958", icon: Calendar },
+    { label: "Type", value: "Government", icon: Building2 },
+    { label: "Campus Size", value: "550 Acres", icon: MapPin },
+    { label: "Total Students", value: "16,000+", icon: Users },
+    { label: "Faculty", value: "680+", icon: GraduationCap },
+    { label: "Courses Offered", value: "147", icon: BookOpen },
+  ],
+  fees: {
+    btech: { amount: 882500, duration: "4 Years" },
+    mtech: { amount: 235000, duration: "2 Years" },
+    phd: { amount: 50000, duration: "5 Years" },
+    mba: { amount: 1500000, duration: "2 Years" },
+  },
+  placement: {
+    year: 2024,
+    studentsPlaced: 1450,
+    totalStudents: 1520,
+    placementRate: 95.4,
+    averagePackage: 2350000,
+    medianPackage: 2100000,
+    highestPackage: 10000000,
+    topRecruiters: [
+      "Google",
+      "Microsoft",
+      "Amazon",
+      "Goldman Sachs",
+      "McKinsey",
+      "BCG",
+      "Apple",
+      "Meta",
+      "Uber",
+      "Adobe",
+      "Flipkart",
+      "Morgan Stanley",
+    ],
+  },
+  courses: [
     {
-
-      id: "1",            {/* College Info */}
-
-      author: "Rahul Sharma",            <div className="flex-1">
-
-      course: "B.Tech CSE",              <div className="flex flex-wrap items-center gap-3 mb-2">
-
-      batch: "2020-2024",                {collegeData.rankings.slice(0, 2).map((ranking) => (
-
-      rating: 5,                  <Badge key={ranking.agency} variant="gold">
-
-      title: "Best decision of my life",                    #{ranking.rank} {ranking.agency}
-
-      content:                  </Badge>
-
-        "IIT Bombay has transformed my career. The faculty, infrastructure, and peer group are exceptional. The placement opportunities are unmatched.",                ))}
-
-      helpful: 234,                <Badge
-
-      date: "2024-12-15",                  variant="secondary"
-
-      avatar: "https://i.pravatar.cc/100?img=1",                  className="bg-green-500/20 text-green-100"
-
-    },                >
-
-    {                  <Check className="w-3.5 h-3.5 mr-1" /> Verified
-
-      id: "2",                </Badge>
-
-      author: "Priya Patel",              </div>
-
-      course: "M.Tech AI",
-
-      batch: "2022-2024",              <h1 className="text-2xl lg:text-3xl font-bold mb-2">
-
-      rating: 4.5,                {collegeData.name}
-
-      title: "Excellent research opportunities",              </h1>
-
+      name: "B.Tech",
+      specializations: [
+        "Computer Science",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Civil Engineering",
+        "Chemical Engineering",
+        "Aerospace Engineering",
+      ],
+      fees: 882500,
+      duration: "4 Years",
+      seats: 1200,
+      eligibility: "JEE Advanced",
+    },
+    {
+      name: "M.Tech",
+      specializations: [
+        "AI & ML",
+        "Data Science",
+        "VLSI Design",
+        "Structural Engineering",
+      ],
+      fees: 235000,
+      duration: "2 Years",
+      seats: 1800,
+      eligibility: "GATE",
+    },
+    {
+      name: "PhD",
+      specializations: ["Research Programs across all departments"],
+      fees: 50000,
+      duration: "3-5 Years",
+      seats: 400,
+      eligibility: "GATE/NET + Interview",
+    },
+    {
+      name: "MBA",
+      specializations: ["Finance", "Marketing", "Operations"],
+      fees: 1500000,
+      duration: "2 Years",
+      seats: 120,
+      eligibility: "CAT",
+    },
+    {
+      name: "M.Sc",
+      specializations: ["Physics", "Chemistry", "Mathematics", "Biology"],
+      fees: 25000,
+      duration: "2 Years",
+      seats: 200,
+      eligibility: "JAM",
+    },
+  ],
+  cutoffs: [
+    {
+      course: "B.Tech Computer Science",
+      exam: "JEE Advanced 2024",
+      general: 68,
+      obc: 45,
+      sc: 18,
+      st: 8,
+    },
+    {
+      course: "B.Tech Electrical Engineering",
+      exam: "JEE Advanced 2024",
+      general: 285,
+      obc: 180,
+      sc: 65,
+      st: 28,
+    },
+    {
+      course: "B.Tech Mechanical Engineering",
+      exam: "JEE Advanced 2024",
+      general: 520,
+      obc: 350,
+      sc: 120,
+      st: 55,
+    },
+    {
+      course: "B.Tech Civil Engineering",
+      exam: "JEE Advanced 2024",
+      general: 1250,
+      obc: 850,
+      sc: 320,
+      st: 145,
+    },
+  ],
+  reviews: [
+    {
+      id: "1",
+      author: "Rahul Sharma",
+      course: "B.Tech CSE",
+      batch: "2020-2024",
+      rating: 5,
+      title: "Best decision of my life",
       content:
-
-        "The research culture here is amazing. Professors are very supportive and the labs are well-equipped. Highly recommend for anyone interested in research.",              <div className="flex flex-wrap items-center gap-4 text-blue-100 mb-4">
-
-      helpful: 156,                <div className="flex items-center gap-1">
-
-      date: "2024-11-20",                  <MapPin className="w-4 h-4" />
-
-      avatar: "https://i.pravatar.cc/100?img=2",                  {collegeData.city}, {collegeData.state}
-
-    },                </div>
-
-    {                <div className="flex items-center gap-1">
-
-      id: "3",                  <Building2 className="w-4 h-4" />
-
-      author: "Amit Kumar",                  Est. {collegeData.establishedYear}
-
-      course: "B.Tech EE",                </div>
-
-      batch: "2019-2023",                <div className="flex items-center gap-1">
-
-      rating: 4.8,                  <GraduationCap className="w-4 h-4" />
-
-      title: "World-class education",                  {collegeData.type}
-
-      content:                </div>
-
-        "The curriculum is rigorous but rewarding. Campus life is vibrant with numerous clubs and festivals. Placements are excellent with top companies visiting.",              </div>
-
+        "IIT Bombay has transformed my career. The faculty, infrastructure, and peer group are exceptional. The placement opportunities are unmatched.",
+      helpful: 234,
+      date: "2024-12-15",
+      avatar: "https://i.pravatar.cc/100?img=1",
+    },
+    {
+      id: "2",
+      author: "Priya Patel",
+      course: "M.Tech AI",
+      batch: "2022-2024",
+      rating: 4.5,
+      title: "Excellent research opportunities",
+      content:
+        "The research culture here is amazing. Professors are very supportive and the labs are well-equipped. Highly recommend for anyone interested in research.",
+      helpful: 156,
+      date: "2024-11-20",
+      avatar: "https://i.pravatar.cc/100?img=2",
+    },
+    {
+      id: "3",
+      author: "Amit Kumar",
+      course: "B.Tech EE",
+      batch: "2019-2023",
+      rating: 4.8,
+      title: "World-class education",
+      content:
+        "The curriculum is rigorous but rewarding. Campus life is vibrant with numerous clubs and festivals. Placements are excellent with top companies visiting.",
       helpful: 189,
-
-      date: "2024-10-05",              {/* Rating & Actions */}
-
-      avatar: "https://i.pravatar.cc/100?img=3",              <div className="flex flex-wrap items-center gap-4">
-
-    },                <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
-
-  ],                  <Star className="w-5 h-5 text-jirs-yellow fill-jirs-yellow" />
-
-  facilities: [                  <span className="font-bold">{collegeData.rating}</span>
-
-    "Central Library",                  <span className="text-blue-200">/ 5</span>
-
-    "Sports Complex",                  <span className="text-blue-200">
-
-    "Swimming Pool",                    ({collegeData.reviewCount} reviews)
-
-    "Gymnasium",                  </span>
-
-    "Medical Center",                </div>
-
+      date: "2024-10-05",
+      avatar: "https://i.pravatar.cc/100?img=3",
+    },
+  ],
+  facilities: [
+    "Central Library",
+    "Sports Complex",
+    "Swimming Pool",
+    "Gymnasium",
+    "Medical Center",
     "Banks & ATMs",
+    "Cafeterias",
+    "Hostels",
+    "WiFi Campus",
+    "Research Labs",
+    "Auditorium",
+    "Convention Center",
+  ],
+  admission: {
+    process: [
+      { step: 1, title: "Register Online", description: "Create an account on the official IIT Bombay admission portal." },
+      { step: 2, title: "Fill Application", description: "Complete the application form with academic details and upload documents." },
+      { step: 3, title: "Appear for Entrance", description: "Take the required entrance exam (JEE Advanced / GATE / CAT / JAM)." },
+      { step: 4, title: "Counselling", description: "Participate in JoSAA / CCMT / IIM counselling based on your rank." },
+      { step: 5, title: "Seat Allotment", description: "Accept the allotted seat and pay the admission fee." },
+      { step: 6, title: "Report to Campus", description: "Complete document verification and join the institute." },
+    ],
+    importantDates: [
+      { event: "JEE Advanced Registration", date: "April 2025", status: "upcoming" },
+      { event: "JEE Advanced Exam", date: "May 2025", status: "upcoming" },
+      { event: "Results Declaration", date: "June 2025", status: "upcoming" },
+      { event: "JoSAA Counselling", date: "June-July 2025", status: "upcoming" },
+      { event: "Classes Begin", date: "August 2025", status: "upcoming" },
+    ],
+    eligibility: [
+      { course: "B.Tech", criteria: "Passed 12th with PCM (75% aggregate or top 20 percentile). Qualified JEE Advanced." },
+      { course: "M.Tech", criteria: "B.Tech/BE with minimum 60% marks. Valid GATE score." },
+      { course: "MBA", criteria: "Bachelor's degree with minimum 60% marks. Valid CAT score." },
+      { course: "PhD", criteria: "Master's degree with minimum 60% marks. Valid GATE/NET score + Interview." },
+    ],
+  },
+  scholarships: [
+    { name: "Merit-cum-Means Scholarship", amount: "Full tuition fee waiver", eligibility: "Family income < ₹5 LPA", deadline: "August 2025" },
+    { name: "Institute Free Studentship", amount: "₹1,000/month + fee waiver", eligibility: "SC/ST students, family income < ₹5 LPA", deadline: "July 2025" },
+    { name: "INSPIRE Fellowship", amount: "₹80,000/year", eligibility: "Top 1% in Class 12 board exams", deadline: "September 2025" },
+    { name: "Aditya Birla Scholarship", amount: "₹65,000/year", eligibility: "Top performers in JEE Advanced", deadline: "October 2025" },
+    { name: "KVPY Fellowship", amount: "₹5,000-7,000/month", eligibility: "KVPY qualified B.Sc/M.Sc students", deadline: "November 2025" },
+    { name: "Teaching Assistantship (TA)", amount: "₹12,400/month", eligibility: "M.Tech/PhD students", deadline: "Ongoing" },
+  ],
+  hostel: {
+    totalHostels: 18,
+    boysHostels: 13,
+    girlsHostels: 5,
+    roomTypes: [
+      { type: "Single Occupancy", fees: "₹25,000/year", available: true },
+      { type: "Double Sharing", fees: "₹18,000/year", available: true },
+      { type: "Triple Sharing", fees: "₹12,000/year", available: false },
+    ],
+    facilities: ["WiFi", "Mess/Canteen", "Laundry", "Common Room", "Gym", "Reading Room", "Medical Facility", "24/7 Security", "Hot Water", "Parking"],
+    messCharges: "₹35,000/semester",
+    messType: "Veg & Non-Veg options available",
+  },
+  qna: [
+    { id: "q1", question: "What is the admission process for B.Tech at IIT Bombay?", answer: "Candidates must qualify JEE Advanced and participate in JoSAA counselling. Seat allotment is based on JEE Advanced rank and category.", author: "Admission Office", date: "2024-12-01", votes: 45 },
+    { id: "q2", question: "What is the average placement package?", answer: "The average placement package for the 2024 batch was ₹23.5 LPA. The highest package went up to ₹1 Crore.", author: "Placement Cell", date: "2024-11-15", votes: 89 },
+    { id: "q3", question: "Is hostel accommodation compulsory for first-year students?", answer: "Yes, hostel accommodation is compulsory for all first-year undergraduate students. Hostels are allotted on a lottery basis.", author: "Dean of Students", date: "2024-10-20", votes: 32 },
+    { id: "q4", question: "Are there any scholarships available for economically weaker sections?", answer: "Yes, IIT Bombay offers Merit-cum-Means scholarships and Institute Free Studentship for students with family income below ₹5 LPA.", author: "Financial Aid Office", date: "2024-09-10", votes: 67 },
+  ],
+  relatedNews: [
+    { id: "n1", title: "IIT Bombay Placements 2025: Average Package Crosses ₹25 LPA", date: "2025-01-15", category: "Placements" },
+    { id: "n2", title: "JEE Advanced 2025: Registration Opens in April", date: "2025-01-10", category: "Admission" },
+    { id: "n3", title: "IIT Bombay Launches New B.Tech Program in AI & Data Science", date: "2025-01-05", category: "Academics" },
+    { id: "n4", title: "NIRF Rankings 2025: IIT Bombay Retains Top 3 Position", date: "2024-12-20", category: "Rankings" },
+  ],
+  hasDistanceLearning: false,
+};
 
-    "Cafeterias",                <div className="flex items-center gap-2">
+const navItems = [
+  { id: "overview", label: "Overview" },
+  { id: "courses", label: "Courses & Fees" },
+  { id: "admission", label: "Admission" },
+  { id: "placements", label: "Placements" },
+  { id: "cutoffs", label: "Cutoffs" },
+  { id: "scholarships", label: "Scholarships" },
+  { id: "hostel", label: "Hostel & Accommodation" },
+  { id: "reviews", label: "Reviews" },
+  { id: "qna", label: "Q&A" },
+  { id: "gallery", label: "Gallery" },
+  { id: "facilities", label: "Facilities" },
+];
 
-    "Hostels",                  <Button variant="gold" size="sm">
-
-    "WiFi Campus",                    Apply Now
-
-    "Research Labs",                  </Button>
-
-    "Auditorium",                  <Button
-
-    "Convention Center",                    variant="outline"
-
-  ],                    size="sm"
-
-};                    className="border-white/30 text-white hover:bg-white/10"
-
-                    leftIcon={<Download className="w-4 h-4" />}
-
-const navItems = [                  >
-
-  { id: "overview", label: "Overview" },                    Brochure
-
-  { id: "courses", label: "Courses & Fees" },                  </Button>
-
-  { id: "placements", label: "Placements" },                  <button className="p-2 rounded-lg border border-white/30 hover:bg-white/10">
-
-  { id: "cutoffs", label: "Cutoffs" },                    <Heart className="w-5 h-5" />
-
-  { id: "reviews", label: "Reviews" },                  </button>
-
-  { id: "gallery", label: "Gallery" },                  <button className="p-2 rounded-lg border border-white/30 hover:bg-white/10">
-
-  { id: "facilities", label: "Facilities" },                    <Share2 className="w-5 h-5" />
-
-];                  </button>
-
-                </div>
-
-function StatCard({              </div>
-
-  icon: Icon,            </div>
-
-  label,          </div>
-
-  value,        </div>
-
-  subValue,      </div>
-
+function StatCard({
+  icon: Icon,
+  label,
+  value,
+  subValue,
   className,
+  highlight,
+}: {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  subValue?: string;
+  className?: string;
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow",
+        highlight && "border-collegium-blue bg-blue-50/50",
+        className
+      )}
+    >
+      <div className="flex items-center gap-4">
+        <div
+          className={cn(
+            "w-12 h-12 rounded-xl flex items-center justify-center",
+            highlight ? "bg-collegium-blue" : "bg-blue-50"
+          )}
+        >
+          <Icon
+            className={cn(
+              "w-6 h-6",
+              highlight ? "text-white" : "text-collegium-blue"
+            )}
+          />
+        </div>
+        <div>
+          <div className="text-sm text-gray-500">{label}</div>
+          <div className="text-xl font-bold text-gray-900">{value}</div>
+          {subValue && (
+            <div className="text-xs text-gray-400">{subValue}</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  highlight,      {/* Quick Stats Bar */}
+export function CollegeDetailPage() {
+  const [activeSection, setActiveSection] = React.useState("overview");
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+  const [isApplyModalOpen, setIsApplyModalOpen] = React.useState(false);
+  const [isBrochureModalOpen, setIsBrochureModalOpen] = React.useState(false);
+  const [applyCourseName, setApplyCourseName] = React.useState<string | undefined>();
 
-}: {      <div className="bg-white border-b border-gray-200 py-4 sticky top-16 z-20">
+  // Handle scroll to update active section
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
 
-  icon: React.ElementType;        <div className="container">
+      const sections = navItems.map((item) =>
+        document.getElementById(item.id)
+      );
+      const scrollPosition = window.scrollY + 200;
 
-  label: string;          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].id);
+          break;
+        }
+      }
+    };
 
-  value: string;            <div className="text-center">
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  subValue?: string;              <div className="text-lg font-bold text-jirs-blue">
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
 
-  className?: string;                {collegeData.cdScore}/10
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  highlight?: boolean;              </div>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section with Background Image */}
+      <div className="relative">
+        {/* Background Image */}
+        <div className="absolute inset-0 h-[500px] md:h-[550px]">
+          <img
+            src={collegeData.coverImage}
+            alt={collegeData.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-collegium-blue via-collegium-blue/80 to-collegium-blue/40" />
+        </div>
 
-}) {              <div className="text-xs text-gray-500">CD Score</div>
+        {/* Hero Content */}
+        <div className="relative z-10 text-white">
+          <div className="container pt-8 pb-16 md:pb-24">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
+              <Link href="/" className="hover:text-white">
+                Home
+              </Link>
+              <ChevronRight className="w-4 h-4" />
+              <Link href="/colleges" className="hover:text-white">
+                Colleges
+              </Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">{collegeData.shortName}</span>
+            </nav>
 
-  return (            </div>
-
-    <div            <div className="text-center">
-
-      className={cn(              <div className="text-lg font-bold text-green-600">
-
-        "bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow",                {formatCurrency(collegeData.placement.averagePackage, {
-
-        highlight && "border-jirs-blue bg-blue-50/50",                  notation: "compact",
-
-        className                })}
-
-      )}              </div>
-
-    >              <div className="text-xs text-gray-500">Avg. Package</div>
-
-      <div className="flex items-center gap-4">            </div>
-
-        <div            <div className="text-center">
-
-          className={cn(              <div className="text-lg font-bold text-blue-600">
-
-            "w-12 h-12 rounded-xl flex items-center justify-center",                {formatCurrency(collegeData.fees.btech.amount, {
-
-            highlight ? "bg-jirs-blue" : "bg-blue-50"                  notation: "compact",
-
-          )}                })}
-
-        >              </div>
-
-          <Icon              <div className="text-xs text-gray-500">B.Tech Fees</div>
-
-            className={cn("w-6 h-6", highlight ? "text-white" : "text-jirs-blue")}            </div>
-
-          />            <div className="text-center">
-
-        </div>              <div className="text-lg font-bold text-gray-900">
-
-        <div>                {collegeData.placement.placementRate}%
-
-          <div className="text-sm text-gray-500">{label}</div>              </div>
-
-          <div className="text-xl font-bold text-gray-900">{value}</div>              <div className="text-xs text-gray-500">Placement</div>
-
-          {subValue && <div className="text-xs text-gray-400">{subValue}</div>}            </div>
-
-        </div>            <div className="text-center hidden lg:block">
-
-      </div>              <div className="text-lg font-bold text-purple-600">
-
-    </div>                {formatCurrency(collegeData.placement.highestPackage, {
-
-  );                  notation: "compact",
-
-}                })}
-
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              {/* Logo */}
+              <div className="w-28 h-28 lg:w-36 lg:h-36 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl font-bold text-collegium-blue shrink-0">
+                {collegeData.name.charAt(0)}
               </div>
 
-export function CollegeDetailPage() {              <div className="text-xs text-gray-500">Highest Package</div>
-
-  const [activeSection, setActiveSection] = React.useState("overview");            </div>
-
-  const [showScrollTop, setShowScrollTop] = React.useState(false);            <div className="text-center hidden lg:block">
-
-              <div className="text-lg font-bold text-gray-900">
-
-  // Handle scroll to update active section                {collegeData.courses.length}
-
-  React.useEffect(() => {              </div>
-
-    const handleScroll = () => {              <div className="text-xs text-gray-500">Courses</div>
-
-      setShowScrollTop(window.scrollY > 500);            </div>
-
-          </div>
-
-      const sections = navItems.map((item) => document.getElementById(item.id));        </div>
-
-      const scrollPosition = window.scrollY + 200;      </div>
-
-
-
-      for (let i = sections.length - 1; i >= 0; i--) {      {/* Content Area */}
-
-        const section = sections[i];      <div className="container py-8">
-
-        if (section && section.offsetTop <= scrollPosition) {        <div className="flex flex-col lg:flex-row gap-8">
-
-          setActiveSection(navItems[i].id);          {/* Main Content */}
-
-          break;          <div className="flex-1 min-w-0">
-
-        }            <Tabs
-
-      }              value={activeTab}
-
-    };              onValueChange={setActiveTab}
-
-              className="w-full"
-
-    window.addEventListener("scroll", handleScroll);            >
-
-    return () => window.removeEventListener("scroll", handleScroll);              <TabsListUnderline className="mb-6">
-
-  }, []);                <TabsTriggerUnderline value="overview">
-
-                  Overview
-
-  const scrollToSection = (id: string) => {                </TabsTriggerUnderline>
-
-    const element = document.getElementById(id);                <TabsTriggerUnderline value="courses">
-
-    if (element) {                  Courses & Fees
-
-      const offset = 120;                </TabsTriggerUnderline>
-
-      const elementPosition = element.getBoundingClientRect().top;                <TabsTriggerUnderline value="placements">
-
-      const offsetPosition = elementPosition + window.pageYOffset - offset;                  Placements
-
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });                </TabsTriggerUnderline>
-
-    }                <TabsTriggerUnderline value="cutoff">
-
-  };                  Cutoffs
-
-                </TabsTriggerUnderline>
-
-  const scrollToTop = () => {                <TabsTriggerUnderline value="reviews">
-
-    window.scrollTo({ top: 0, behavior: "smooth" });                  Reviews
-
-  };                </TabsTriggerUnderline>
-
-                <TabsTriggerUnderline value="gallery">
-
-  return (                  Gallery
-
-    <div className="min-h-screen bg-gray-50">                </TabsTriggerUnderline>
-
-      {/* Hero Section with Background Image */}              </TabsListUnderline>
-
-      <div className="relative">
-
-        {/* Background Image */}              {/* Overview Tab */}
-
-        <div className="absolute inset-0 h-[500px] md:h-[550px]">              <TabsContent value="overview" className="space-y-8">
-
-          <img                {/* About */}
-
-            src={collegeData.coverImage}                <Card>
-
-            alt={collegeData.name}                  <CardContent className="p-6">
-
-            className="w-full h-full object-cover"                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-          />                      About {collegeData.shortName}
-
-          <div className="absolute inset-0 bg-gradient-to-t from-jirs-blue via-jirs-blue/80 to-jirs-blue/40" />                    </h2>
-
-        </div>                    <p className="text-gray-600 leading-relaxed mb-4">
-
-                      The Indian Institute of Technology Bombay (IIT Bombay) is
-
-        {/* Hero Content */}                      a public technical and research university located in
-
-        <div className="relative z-10 text-white">                      Powai, Mumbai, India. IIT Bombay was established in 1958
-
-          <div className="container pt-8 pb-16 md:pb-24">                      and is the second-oldest IIT in India. The institute is
-
-            {/* Breadcrumb */}                      recognized as an Institute of National Importance by the
-
-            <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">                      Government of India.
-
-              <Link href="/" className="hover:text-white">                    </p>
-
-                Home                    <p className="text-gray-600 leading-relaxed">
-
-              </Link>                      IIT Bombay offers undergraduate, postgraduate, and
-
-              <ChevronRight className="w-4 h-4" />                      doctoral programs in various fields of engineering, pure
-
-              <Link href="/colleges" className="hover:text-white">                      sciences, design, and humanities & social sciences. The
-
-                Colleges                      institute has been consistently ranked among the top
-
-              </Link>                      engineering institutes in India and Asia.
-
-              <ChevronRight className="w-4 h-4" />                    </p>
-
-              <span className="text-white">{collegeData.shortName}</span>                  </CardContent>
-
-            </nav>                </Card>
-
-
-
-            <div className="flex flex-col lg:flex-row gap-8 items-start">                {/* Key Highlights */}
-
-              {/* Logo */}                <Card>
-
-              <div className="w-28 h-28 lg:w-36 lg:h-36 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl font-bold text-jirs-blue shrink-0">                  <CardContent className="p-6">
-
-                {collegeData.name.charAt(0)}                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-              </div>                      Key Highlights
-
-                    </h2>
-
-              {/* College Info */}                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-
-              <div className="flex-1">                      {collegeData.highlights.map((highlight) => (
-
-                <div className="flex flex-wrap items-center gap-3 mb-3">                        <div
-
-                  {collegeData.rankings.slice(0, 2).map((ranking) => (                          key={highlight.label}
-
-                    <Badge                          className="bg-gray-50 rounded-lg p-4"
-
-                      key={ranking.agency}                        >
-
-                      className="bg-jirs-yellow text-jirs-blue font-semibold"                          <div className="text-sm text-gray-500">
-
-                    >                            {highlight.label}
-
-                      #{ranking.rank} {ranking.agency}                          </div>
-
-                    </Badge>                          <div className="font-bold text-gray-900">
-
-                  ))}                            {highlight.value}
-
-                  <Badge className="bg-green-500 text-white">                          </div>
-
-                    <Check className="w-3.5 h-3.5 mr-1" /> Verified                        </div>
-
-                  </Badge>                      ))}
-
-                </div>                    </div>
-
-                  </CardContent>
-
-                <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 leading-tight">                </Card>
-
+              {/* College Info */}
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  {collegeData.rankings.slice(0, 2).map((ranking) => (
+                    <Badge
+                      key={ranking.agency}
+                      className="bg-collegium-yellow text-collegium-blue font-semibold"
+                    >
+                      #{ranking.rank} {ranking.agency}
+                    </Badge>
+                  ))}
+                  <Badge className="bg-green-500 text-white">
+                    <Check className="w-3.5 h-3.5 mr-1" /> Verified
+                  </Badge>
+                </div>
+
+                <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 leading-tight">
                   {collegeData.name}
-
-                </h1>                {/* Rankings */}
-
-                <Card>
-
-                <p className="text-xl text-jirs-yellow mb-4 font-medium">                  <CardContent className="p-6">
-
-                  {collegeData.tagline}                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-                </p>                      Rankings & Accreditations
-
-                    </h2>
-
-                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-white/90 mb-6">                    <div className="grid sm:grid-cols-2 gap-4">
-
-                  <div className="flex items-center gap-2">                      <div>
-
-                    <MapPin className="w-5 h-5" />                        <h3 className="font-medium text-gray-700 mb-3">
-
-                    <span>                          Rankings
-
-                      {collegeData.city}, {collegeData.state}                        </h3>
-
-                    </span>                        <div className="space-y-3">
-
-                  </div>                          {collegeData.rankings.map((ranking) => (
-
-                  <div className="flex items-center gap-2">                            <div
-
-                    <Building2 className="w-5 h-5" />                              key={ranking.agency}
-
-                    <span>Est. {collegeData.establishedYear}</span>                              className="flex items-center justify-between bg-yellow-50 rounded-lg p-3"
-
-                  </div>                            >
-
-                  <div className="flex items-center gap-2">                              <div>
-
-                    <GraduationCap className="w-5 h-5" />                                <div className="font-medium text-gray-900">
-
-                    <span>{collegeData.type}</span>                                  {ranking.agency}
-
-                  </div>                                </div>
-
-                </div>                                <div className="text-sm text-gray-500">
-
-                                  {ranking.category} {ranking.year}
-
-                {/* Rating & Actions */}                                </div>
-
-                <div className="flex flex-wrap items-center gap-4">                              </div>
-
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3">                              <div className="text-2xl font-bold text-jirs-blue">
-
-                    <Star className="w-6 h-6 text-jirs-yellow fill-jirs-yellow" />                                #{ranking.rank}
-
-                    <span className="text-2xl font-bold">                              </div>
-
-                      {collegeData.rating}                            </div>
-
-                    </span>                          ))}
-
-                    <span className="text-white/70">/ 5</span>                        </div>
-
-                    <span className="text-white/70 ml-1">                      </div>
-
-                      ({collegeData.reviewCount} reviews)                      <div>
-
-                    </span>                        <h3 className="font-medium text-gray-700 mb-3">
-
-                  </div>                          Accreditations
-
-                        </h3>
-
-                  <div className="flex items-center gap-2">                        <div className="space-y-3">
-
-                    <Button                          {collegeData.accreditations.map((acc) => (
-
-                      size="lg"                            <div
-
-                      className="bg-jirs-yellow text-jirs-blue hover:bg-yellow-400 font-semibold"                              key={acc.agency}
-
-                    >                              className="flex items-center justify-between bg-green-50 rounded-lg p-3"
-
-                      Apply Now                            >
-
-                    </Button>                              <div>
-
-                    <Button                                <div className="font-medium text-gray-900">
-
-                      variant="outline"                                  {acc.agency}
-
-                      size="lg"                                </div>
-
-                      className="border-white/40 text-white hover:bg-white/10"                                {acc.score && (
-
-                      leftIcon={<Download className="w-4 h-4" />}                                  <div className="text-sm text-gray-500">
-
-                    >                                    Score: {acc.score}
-
-                      Brochure                                  </div>
-
-                    </Button>                                )}
-
-                    <button className="p-3 rounded-xl border border-white/40 hover:bg-white/10 transition-colors">                              </div>
-
-                      <Heart className="w-5 h-5" />                              <Badge variant="success">{acc.grade}</Badge>
-
-                    </button>                            </div>
-
-                    <button className="p-3 rounded-xl border border-white/40 hover:bg-white/10 transition-colors">                          ))}
-
-                      <Share2 className="w-5 h-5" />                        </div>
-
-                    </button>                        <div className="mt-4">
-
-                  </div>                          <h3 className="font-medium text-gray-700 mb-3">
-
-                </div>                            Approvals
-
-              </div>                          </h3>
-
-            </div>                          <div className="flex flex-wrap gap-2">
-
-          </div>                            {collegeData.approvals.map((approval) => (
-
-        </div>                              <Badge key={approval} variant="outline">
-
-      </div>                                {approval}
-
-                              </Badge>
-
-      {/* Quick Stats Bar */}                            ))}
-
-      <div className="bg-white border-b border-gray-200 py-6 -mt-8 relative z-20 rounded-t-3xl shadow-lg">                          </div>
-
-        <div className="container">                        </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">                      </div>
-
-            <div className="text-center">                    </div>
-
-              <div className="text-2xl font-bold text-jirs-blue">                  </CardContent>
-
-                {collegeData.cdScore}/10                </Card>
-
-              </div>              </TabsContent>
-
+                </h1>
+
+                <p className="text-xl text-collegium-yellow mb-4 font-medium">
+                  {collegeData.tagline}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-white/90 mb-6">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-5 h-5" />
+                    <span>
+                      {collegeData.city}, {collegeData.state}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Building2 className="w-5 h-5" />
+                    <span>Est. {collegeData.establishedYear}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5" />
+                    <span>{collegeData.type}</span>
+                  </div>
+                </div>
+
+                {/* Rating & Actions */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3">
+                    <Star className="w-6 h-6 text-collegium-yellow fill-collegium-yellow" />
+                    <span className="text-2xl font-bold">
+                      {collegeData.rating}
+                    </span>
+                    <span className="text-white/70">/ 5</span>
+                    <span className="text-white/70 ml-1">
+                      ({collegeData.reviewCount} reviews)
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="lg"
+                      className="bg-collegium-yellow text-collegium-blue hover:bg-yellow-400 font-semibold"
+                      onClick={() => setIsApplyModalOpen(true)}
+                    >
+                      Apply Now
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-white/40 text-white hover:bg-white/10"
+                      leftIcon={<Download className="w-4 h-4" />}
+                      onClick={() => setIsBrochureModalOpen(true)}
+                    >
+                      Brochure
+                    </Button>
+                    <button className="p-3 rounded-xl border border-white/40 hover:bg-white/10 transition-colors">
+                      <Heart className="w-5 h-5" />
+                    </button>
+                    <button className="p-3 rounded-xl border border-white/40 hover:bg-white/10 transition-colors">
+                      <Share2 className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Stats Bar */}
+      <div className="bg-white border-b border-gray-200 py-6 -mt-8 relative z-20 rounded-t-3xl shadow-lg">
+        <div className="container">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-collegium-blue">
+                {collegeData.cdScore}/10
+              </div>
               <div className="text-sm text-gray-500">CD Score</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">
+                {formatCurrency(collegeData.placement.averagePackage, {
+                  notation: "compact",
+                })}
+              </div>
+              <div className="text-sm text-gray-500">Avg. Package</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-blue-600">
+                {formatCurrency(collegeData.fees.btech.amount, {
+                  notation: "compact",
+                })}
+              </div>
+              <div className="text-sm text-gray-500">B.Tech Fees</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-600">
+                {collegeData.placement.placementRate}%
+              </div>
+              <div className="text-sm text-gray-500">Placement Rate</div>
+            </div>
+            <div className="text-center hidden sm:block">
+              <div className="text-2xl font-bold text-orange-600">
+                {formatCurrency(collegeData.placement.highestPackage, {
+                  notation: "compact",
+                })}
+              </div>
+              <div className="text-sm text-gray-500">Highest Package</div>
+            </div>
+            <div className="text-center hidden lg:block">
+              <div className="text-2xl font-bold text-gray-900">
+                {collegeData.courses.length}
+              </div>
+              <div className="text-sm text-gray-500">Programs</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            </div>              {/* Courses Tab */}
-
-            <div className="text-center">              <TabsContent value="courses" className="space-y-6">
-
-              <div className="text-2xl font-bold text-green-600">                <Card>
-
-                {formatCurrency(collegeData.placement.averagePackage, {                  <CardContent className="p-6">
-
-                  notation: "compact",                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-                })}                      Courses Offered at {collegeData.shortName}
-
-              </div>                    </h2>
-
-              <div className="text-sm text-gray-500">Avg. Package</div>                    <div className="space-y-4">
-
-            </div>                      {collegeData.courses.map((course) => (
-
-            <div className="text-center">                        <div
-
-              <div className="text-2xl font-bold text-blue-600">                          key={course.name}
-
-                {formatCurrency(collegeData.fees.btech.amount, {                          className="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow"
-
-                  notation: "compact",                        >
-
-                })}                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-
-              </div>                            <div>
-
-              <div className="text-sm text-gray-500">B.Tech Fees</div>                              <h3 className="font-bold text-gray-900">
-
-            </div>                                {course.name}
-
-            <div className="text-center">                              </h3>
-
-              <div className="text-2xl font-bold text-purple-600">                              <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-500">
-
-                {collegeData.placement.placementRate}%                                <span>
-
-              </div>                                  {course.specializations} Specializations
-
-              <div className="text-sm text-gray-500">Placement Rate</div>                                </span>
-
-            </div>                                <span>{course.duration}</span>
-
-            <div className="text-center hidden sm:block">                                <span>{course.seats} Seats</span>
-
-              <div className="text-2xl font-bold text-orange-600">                              </div>
-
-                {formatCurrency(collegeData.placement.highestPackage, {                            </div>
-
-                  notation: "compact",                            <div className="text-right">
-
-                })}                              <div className="text-lg font-bold text-jirs-blue">
-
-              </div>                                {formatCurrency(course.fees)}
-
-              <div className="text-sm text-gray-500">Highest Package</div>                              </div>
-
-            </div>                              <div className="text-sm text-gray-500">
-
-            <div className="text-center hidden lg:block">                                Total Fees
-
-              <div className="text-2xl font-bold text-gray-900">                              </div>
-
-                {collegeData.courses.length}                            </div>
-
-              </div>                          </div>
-
-              <div className="text-sm text-gray-500">Programs</div>                          <div className="flex gap-2 mt-4">
-
-            </div>                            <Button variant="outline" size="sm">
-
-          </div>                              View Details
-
-        </div>                            </Button>
-
-      </div>                            <Button variant="primary" size="sm">
-
-                              Apply Now
-
-      {/* Sticky Navigation */}                            </Button>
-
-      <div className="sticky top-16 lg:top-20 z-30 bg-white border-b border-gray-200 shadow-sm">                          </div>
-
-        <div className="container">                        </div>
-
-          <div className="flex gap-1 overflow-x-auto scrollbar-hide py-2">                      ))}
-
-            {navItems.map((item) => (                    </div>
-
-              <button                  </CardContent>
-
-                key={item.id}                </Card>
-
-                onClick={() => scrollToSection(item.id)}              </TabsContent>
-
+      {/* Sticky Navigation */}
+      <div className="sticky top-16 lg:top-20 z-30 bg-white border-b border-gray-200 shadow-sm">
+        <div className="container">
+          <div className="flex gap-1 overflow-x-auto scrollbar-hide py-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className={cn(
+                  "px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all",
+                  activeSection === item.id
+                    ? "bg-collegium-blue text-white"
+                    : "text-gray-600 hover:bg-gray-100"
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-                  "px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all",              {/* Placements Tab */}
-
-                  activeSection === item.id              <TabsContent value="placements" className="space-y-6">
-
-                    ? "bg-jirs-blue text-white"                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                    : "text-gray-600 hover:bg-gray-100"                  <StatCard
-
-                )}                    icon={BarChart3}
-
-              >                    label="Avg. Package"
-
-                {item.label}                    value={formatCurrency(collegeData.placement.averagePackage)}
-
-              </button>                  />
-
-            ))}                  <StatCard
-
-          </div>                    icon={TrendingUp}
-
-        </div>                    label="Highest Package"
-
-      </div>                    value={formatCurrency(collegeData.placement.highestPackage)}
-
-                  />
-
-      {/* Content Area */}                  <StatCard
-
-      <div className="container py-10">                    icon={Users}
-
-        <div className="flex flex-col lg:flex-row gap-8">                    label="Students Placed"
-
-          {/* Main Content */}                    value={collegeData.placement.studentsPlaced.toString()}
-
-          <div className="flex-1 min-w-0 space-y-12">                    subValue={`of ${collegeData.placement.totalStudents}`}
-
-            {/* Overview Section */}                  />
-
-            <section id="overview" className="scroll-mt-32">                  <StatCard
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">                    icon={Briefcase}
-
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">                    label="Placement Rate"
-
-                  <Building2 className="w-5 h-5 text-white" />                    value={`${collegeData.placement.placementRate}%`}
-
-                </div>                  />
-
-                About {collegeData.shortName}                </div>
-
+      {/* Content Area */}
+      <div className="container py-10">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Main Content */}
+          <div className="flex-1 min-w-0 space-y-12">
+            {/* Overview Section */}
+            <section id="overview" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-white" />
+                </div>
+                About {collegeData.shortName}
               </h2>
 
-                <Card>
-
-              <Card className="mb-8">                  <CardContent className="p-6">
-
-                <CardContent className="p-6 md:p-8">                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-                  <p className="text-gray-600 leading-relaxed text-lg mb-6">                      Top Recruiters
-
-                    The Indian Institute of Technology Bombay (IIT Bombay) is a                    </h2>
-
-                    public technical and research university located in Powai,                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-
-                    Mumbai, India. IIT Bombay was established in 1958 and is the                      {collegeData.placement.topRecruiters.map((recruiter) => (
-
-                    second-oldest IIT in India. The institute is recognized as                        <div
-
-                    an Institute of National Importance by the Government of                          key={recruiter}
-
-                    India.                          className="bg-gray-50 rounded-lg p-4 text-center font-medium text-gray-700"
-
-                  </p>                        >
-
-                  <p className="text-gray-600 leading-relaxed text-lg">                          {recruiter}
-
-                    IIT Bombay offers undergraduate, postgraduate, and doctoral                        </div>
-
-                    programs in various fields of engineering, pure sciences,                      ))}
-
-                    design, and humanities & social sciences. The institute has                    </div>
-
-                    been consistently ranked among the top engineering                  </CardContent>
-
-                    institutes in India and Asia.                </Card>
-
-                  </p>              </TabsContent>
-
+              <Card className="mb-8">
+                <CardContent className="p-6 md:p-8">
+                  <p className="text-gray-600 leading-relaxed text-lg mb-6">
+                    The Indian Institute of Technology Bombay (IIT Bombay) is a
+                    public technical and research university located in Powai,
+                    Mumbai, India. IIT Bombay was established in 1958 and is the
+                    second-oldest IIT in India. The institute is recognized as
+                    an Institute of National Importance by the Government of
+                    India.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed text-lg">
+                    IIT Bombay offers undergraduate, postgraduate, and doctoral
+                    programs in various fields of engineering, pure sciences,
+                    design, and humanities & social sciences. The institute has
+                    been consistently ranked among the top engineering
+                    institutes in India and Asia.
+                  </p>
                 </CardContent>
+              </Card>
 
-              </Card>              {/* Cutoff Tab */}
-
-              <TabsContent value="cutoff">
-
-              {/* Key Highlights */}                <Card>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-4">                  <CardContent className="p-6">
-
-                Key Highlights                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-              </h3>                      JEE Advanced Cutoff 2024
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">                    </h2>
-
-                {collegeData.highlights.map((highlight) => {                    <p className="text-gray-600">Cutoff data coming soon...</p>
-
-                  const Icon = highlight.icon;                  </CardContent>
-
-                  return (                </Card>
-
-                    <div              </TabsContent>
-
+              {/* Key Highlights */}
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Key Highlights
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                {collegeData.highlights.map((highlight) => {
+                  const Icon = highlight.icon;
+                  return (
+                    <div
                       key={highlight.label}
-
-                      className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow"              {/* Reviews Tab */}
-
-                    >              <TabsContent value="reviews">
-
-                      <div className="flex items-center gap-3 mb-2">                <Card>
-
-                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">                  <CardContent className="p-6">
-
-                          <Icon className="w-5 h-5 text-jirs-blue" />                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-                        </div>                      Student Reviews
-
-                      </div>                    </h2>
-
-                      <div className="text-sm text-gray-500">                    <p className="text-gray-600">
-
-                        {highlight.label}                      Reviews section coming soon...
-
-                      </div>                    </p>
-
-                      <div className="text-xl font-bold text-gray-900">                  </CardContent>
-
-                        {highlight.value}                </Card>
-
-                      </div>              </TabsContent>
-
+                      className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-collegium-blue" />
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {highlight.label}
+                      </div>
+                      <div className="text-xl font-bold text-gray-900">
+                        {highlight.value}
+                      </div>
                     </div>
+                  );
+                })}
+              </div>
 
-                  );              {/* Gallery Tab */}
-
-                })}              <TabsContent value="gallery">
-
-              </div>                <Card>
-
+              {/* Rankings & Accreditations */}
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Rankings & Accreditations
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
                   <CardContent className="p-6">
-
-              {/* Rankings & Accreditations */}                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-
-              <h3 className="text-xl font-bold text-gray-900 mb-4">                      Campus Gallery
-
-                Rankings & Accreditations                    </h2>
-
-              </h3>                    <p className="text-gray-600">
-
-              <div className="grid md:grid-cols-2 gap-6">                      Gallery section coming soon...
-
-                <Card>                    </p>
-
-                  <CardContent className="p-6">                  </CardContent>
-
-                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">                </Card>
-
-                      <Award className="w-5 h-5 text-jirs-yellow" />              </TabsContent>
-
-                      Rankings            </Tabs>
-
-                    </h4>          </div>
-
+                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Award className="w-5 h-5 text-collegium-yellow" />
+                      Rankings
+                    </h4>
                     <div className="space-y-3">
-
-                      {collegeData.rankings.map((ranking) => (          {/* Sidebar */}
-
-                        <div          <div className="w-full lg:w-80 shrink-0 space-y-6">
-
-                          key={ranking.agency}            {/* Quick Apply Card */}
-
-                          className="flex items-center justify-between bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4"            <Card>
-
-                        >              <CardContent className="p-6">
-
-                          <div>                <h3 className="font-bold text-gray-900 mb-4">
-
-                            <div className="font-semibold text-gray-900">                  Interested in {collegeData.shortName}?
-
-                              {ranking.agency}                </h3>
-
-                            </div>                <form className="space-y-4">
-
-                            <div className="text-sm text-gray-500">                  <input
-
-                              {ranking.category} {ranking.year}                    type="text"
-
-                            </div>                    placeholder="Your Name"
-
-                          </div>                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue"
-
-                          <div className="text-3xl font-bold text-jirs-blue">                  />
-
-                            #{ranking.rank}                  <input
-
-                          </div>                    type="email"
-
-                        </div>                    placeholder="Email Address"
-
-                      ))}                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue"
-
-                    </div>                  />
-
-                  </CardContent>                  <input
-
-                </Card>                    type="tel"
-
-                    placeholder="Phone Number"
-
-                <Card>                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue"
-
-                  <CardContent className="p-6">                  />
-
-                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">                  <Button variant="primary" className="w-full">
-
-                      <Check className="w-5 h-5 text-green-600" />                    Get Expert Counselling
-
-                      Accreditations                  </Button>
-
-                    </h4>                </form>
-
-                    <div className="space-y-3 mb-6">              </CardContent>
-
-                      {collegeData.accreditations.map((acc) => (            </Card>
-
+                      {collegeData.rankings.map((ranking) => (
                         <div
+                          key={ranking.agency}
+                          className="flex items-center justify-between bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4"
+                        >
+                          <div>
+                            <div className="font-semibold text-gray-900">
+                              {ranking.agency}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {ranking.category} {ranking.year}
+                            </div>
+                          </div>
+                          <div className="text-3xl font-bold text-collegium-blue">
+                            #{ranking.rank}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
 
-                          key={acc.agency}            {/* Contact Info */}
+                <Card>
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Check className="w-5 h-5 text-green-600" />
+                      Accreditations
+                    </h4>
+                    <div className="space-y-3 mb-6">
+                      {collegeData.accreditations.map((acc) => (
+                        <div
+                          key={acc.agency}
+                          className="flex items-center justify-between bg-green-50 rounded-xl p-4"
+                        >
+                          <div>
+                            <div className="font-semibold text-gray-900">
+                              {acc.agency}
+                            </div>
+                            {acc.score && (
+                              <div className="text-sm text-gray-500">
+                                Score: {acc.score}
+                              </div>
+                            )}
+                          </div>
+                          <Badge className="bg-green-600 text-white">
+                            {acc.grade}
+                          </Badge>
+                        </div>
+                      ))}
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-3">
+                      Approvals
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {collegeData.approvals.map((approval) => (
+                        <Badge
+                          key={approval}
+                          variant="outline"
+                          className="text-sm"
+                        >
+                          {approval}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
 
-                          className="flex items-center justify-between bg-green-50 rounded-xl p-4"            <Card>
-
-                        >              <CardContent className="p-6">
-
-                          <div>                <h3 className="font-bold text-gray-900 mb-4">
-
-                            <div className="font-semibold text-gray-900">                  Contact Information
-
-                              {acc.agency}                </h3>
-
-                            </div>                <div className="space-y-3">
-
-                            {acc.score && (                  <a
-
-                              <div className="text-sm text-gray-500">                    href={`tel:${collegeData.phone}`}
-
-                                Score: {acc.score}                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-jirs-blue"
-
-                              </div>                  >
-
-                            )}                    <Phone className="w-4 h-4" />
-
-                          </div>                    {collegeData.phone}
-
-                          <Badge className="bg-green-600 text-white">                  </a>
-
-                            {acc.grade}                  <a
-
-                          </Badge>                    href={`mailto:${collegeData.email}`}
-
-                        </div>                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-jirs-blue"
-
-                      ))}                  >
-
-                    </div>                    <Mail className="w-4 h-4" />
-
-                    <h4 className="font-semibold text-gray-900 mb-3">                    {collegeData.email}
-
-                      Approvals                  </a>
-
-                    </h4>                  <a
-
-                    <div className="flex flex-wrap gap-2">                    href={collegeData.website}
-
-                      {collegeData.approvals.map((approval) => (                    target="_blank"
-
-                        <Badge key={approval} variant="outline" className="text-sm">                    rel="noopener noreferrer"
-
-                          {approval}                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-jirs-blue"
-
-                        </Badge>                  >
-
-                      ))}                    <Globe className="w-4 h-4" />
-
-                    </div>                    Visit Website
-
-                  </CardContent>                    <ExternalLink className="w-3 h-3" />
-
-                </Card>                  </a>
-
-              </div>                  <div className="flex items-start gap-3 text-sm text-gray-600">
-
-            </section>                    <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-
-                    {collegeData.address}
-
-            {/* Courses & Fees Section */}                  </div>
-
-            <section id="courses" className="scroll-mt-32">                </div>
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">              </CardContent>
-
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">            </Card>
-
+            {/* Courses & Fees Section */}
+            <section id="courses" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                   <BookOpen className="w-5 h-5 text-white" />
+                </div>
+                Courses & Fees
+              </h2>
 
-                </div>            {/* Similar Colleges */}
-
-                Courses & Fees            <Card>
-
-              </h2>              <CardContent className="p-6">
-
-                <h3 className="font-bold text-gray-900 mb-4">
-
-              <div className="space-y-4">                  Similar Colleges
-
-                {collegeData.courses.map((course) => (                </h3>
-
-                  <Card                <div className="space-y-3">
-
-                    key={course.name}                  {["IIT Delhi", "IIT Madras", "IIT Kanpur", "BITS Pilani"].map(
-
-                    className="hover:shadow-lg transition-shadow"                    (college) => (
-
-                  >                      <Link
-
-                    <CardContent className="p-6">                        key={college}
-
-                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">                        href="#"
-
-                        <div>                        className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-
-                          <h3 className="text-xl font-bold text-gray-900 mb-1">                      >
-
-                            {course.name}                        <div className="font-medium text-gray-900">
-
-                          </h3>                          {college}
-
-                          <div className="flex flex-wrap gap-3 text-sm text-gray-500">                        </div>
-
-                            <span className="flex items-center gap-1">                        <div className="text-sm text-gray-500">
-
-                              <Calendar className="w-4 h-4" />                          View Details →
-
-                              {course.duration}                        </div>
-
-                            </span>                      </Link>
-
-                            <span className="flex items-center gap-1">                    ),
-
-                              <Users className="w-4 h-4" />                  )}
-
-                              {course.seats} Seats                </div>
-
-                            </span>              </CardContent>
-
-                            <span className="flex items-center gap-1">            </Card>
-
-                              <GraduationCap className="w-4 h-4" />          </div>
-
-                              {course.eligibility}        </div>
-
-                            </span>      </div>
-
-                          </div>    </div>
-
-                        </div>  );
-
-                        <div className="text-right">}
-
-                          <div className="text-2xl font-bold text-jirs-blue">
+              <div className="space-y-4">
+                {collegeData.courses.map((course) => (
+                  <Card
+                    key={course.name}
+                    className="hover:shadow-lg transition-shadow"
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">
+                            {course.name}
+                          </h3>
+                          <div className="flex flex-wrap gap-3 text-sm text-gray-500">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-4 h-4" />
+                              {course.duration}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Users className="w-4 h-4" />
+                              {course.seats} Seats
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <GraduationCap className="w-4 h-4" />
+                              {course.eligibility}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-collegium-blue">
                             {formatCurrency(course.fees)}
                           </div>
-                          <div className="text-sm text-gray-500">Total Fees</div>
+                          <div className="text-sm text-gray-500">
+                            Total Fees
+                          </div>
                         </div>
                       </div>
 
@@ -1461,7 +824,7 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                         <Button variant="outline" size="sm">
                           View Details
                         </Button>
-                        <Button size="sm">Apply Now</Button>
+                        <Button size="sm" onClick={() => { setApplyCourseName(course.name); setIsApplyModalOpen(true); }}>Apply Now</Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -1469,10 +832,75 @@ export function CollegeDetailPage() {              <div className="text-xs text-
               </div>
             </section>
 
+            {/* Admission Section */}
+            <section id="admission" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-white" />
+                </div>
+                Admission Process
+              </h2>
+
+              {/* Admission Steps */}
+              <Card className="mb-6">
+                <CardContent className="p-6 md:p-8">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">How to Apply</h3>
+                  <div className="space-y-4">
+                    {collegeData.admission.process.map((step) => (
+                      <div key={step.step} className="flex gap-4">
+                        <div className="w-8 h-8 bg-collegium-blue text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                          {step.step}
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">{step.title}</h4>
+                          <p className="text-sm text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Important Dates */}
+              <Card className="mb-6">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Important Dates</h3>
+                  <div className="space-y-3">
+                    {collegeData.admission.importantDates.map((item) => (
+                      <div key={item.event} className="flex items-center justify-between bg-gray-50 rounded-xl p-4">
+                        <div className="font-medium text-gray-900">{item.event}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-gray-600">{item.date}</span>
+                          <Badge variant={item.status === "upcoming" ? "secondary" : "default"} className="text-xs capitalize">
+                            {item.status}
+                          </Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Eligibility */}
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Eligibility Criteria</h3>
+                  <div className="space-y-3">
+                    {collegeData.admission.eligibility.map((item) => (
+                      <div key={item.course} className="bg-blue-50 rounded-xl p-4">
+                        <div className="font-semibold text-collegium-blue mb-1">{item.course}</div>
+                        <div className="text-sm text-gray-700">{item.criteria}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
             {/* Placements Section */}
             <section id="placements" className="scroll-mt-32">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                   <Briefcase className="w-5 h-5 text-white" />
                 </div>
                 Placements {collegeData.placement.year}
@@ -1525,7 +953,7 @@ export function CollegeDetailPage() {              <div className="text-xs text-
             {/* Cutoffs Section */}
             <section id="cutoffs" className="scroll-mt-32">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                   <BarChart3 className="w-5 h-5 text-white" />
                 </div>
                 Admission Cutoffs
@@ -1564,8 +992,10 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                             <td className="p-4 font-medium text-gray-900">
                               {cutoff.course}
                             </td>
-                            <td className="p-4 text-gray-600">{cutoff.exam}</td>
-                            <td className="p-4 text-center font-semibold text-jirs-blue">
+                            <td className="p-4 text-gray-600">
+                              {cutoff.exam}
+                            </td>
+                            <td className="p-4 text-center font-semibold text-collegium-blue">
                               {cutoff.general}
                             </td>
                             <td className="p-4 text-center text-gray-700">
@@ -1595,10 +1025,12 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                         </p>
                         <div className="grid grid-cols-4 gap-2 text-center">
                           <div className="bg-blue-50 rounded-lg p-2">
-                            <div className="font-bold text-jirs-blue">
+                            <div className="font-bold text-collegium-blue">
                               {cutoff.general}
                             </div>
-                            <div className="text-xs text-gray-500">General</div>
+                            <div className="text-xs text-gray-500">
+                              General
+                            </div>
                           </div>
                           <div className="bg-gray-50 rounded-lg p-2">
                             <div className="font-bold text-gray-700">
@@ -1626,11 +1058,114 @@ export function CollegeDetailPage() {              <div className="text-xs text-
               </Card>
             </section>
 
+            {/* Scholarships Section */}
+            <section id="scholarships" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
+                  <Award className="w-5 h-5 text-white" />
+                </div>
+                Scholarships
+              </h2>
+
+              <div className="grid gap-4">
+                {collegeData.scholarships.map((scholarship) => (
+                  <Card key={scholarship.name} className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 mb-1">{scholarship.name}</h3>
+                          <p className="text-sm text-gray-600 mb-2">{scholarship.eligibility}</p>
+                          <div className="flex items-center gap-3 text-xs text-gray-500">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3.5 h-3.5" />
+                              Deadline: {scholarship.deadline}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-bold text-green-600">{scholarship.amount}</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
+
+            {/* Hostel & Accommodation Section */}
+            <section id="hostel" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-white" />
+                </div>
+                Hostel & Accommodation
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-gray-900 mb-4">Hostel Overview</h3>
+                    <div className="grid grid-cols-3 gap-4 mb-4">
+                      <div className="text-center bg-blue-50 rounded-xl p-4">
+                        <div className="text-2xl font-bold text-collegium-blue">{collegeData.hostel.totalHostels}</div>
+                        <div className="text-xs text-gray-500">Total Hostels</div>
+                      </div>
+                      <div className="text-center bg-blue-50 rounded-xl p-4">
+                        <div className="text-2xl font-bold text-collegium-blue">{collegeData.hostel.boysHostels}</div>
+                        <div className="text-xs text-gray-500">Boys Hostels</div>
+                      </div>
+                      <div className="text-center bg-pink-50 rounded-xl p-4">
+                        <div className="text-2xl font-bold text-pink-600">{collegeData.hostel.girlsHostels}</div>
+                        <div className="text-xs text-gray-500">Girls Hostels</div>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <div className="text-sm text-gray-600">Mess Charges: <strong>{collegeData.hostel.messCharges}</strong></div>
+                      <div className="text-sm text-gray-600 mt-1">{collegeData.hostel.messType}</div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-gray-900 mb-4">Room Types & Fees</h3>
+                    <div className="space-y-3">
+                      {collegeData.hostel.roomTypes.map((room) => (
+                        <div key={room.type} className="flex items-center justify-between bg-gray-50 rounded-xl p-4">
+                          <div>
+                            <div className="font-medium text-gray-900">{room.type}</div>
+                            <div className="text-sm text-gray-500">{room.fees}</div>
+                          </div>
+                          <Badge variant={room.available ? "default" : "secondary"}>
+                            {room.available ? "Available" : "Full"}
+                          </Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-bold text-gray-900 mb-4">Hostel Facilities</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    {collegeData.hostel.facilities.map((facility) => (
+                      <div key={facility} className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl">
+                        <Check className="w-4 h-4 text-green-600 shrink-0" />
+                        <span className="text-sm text-gray-700">{facility}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
             {/* Reviews Section */}
             <section id="reviews" className="scroll-mt-32">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                     <MessageSquare className="w-5 h-5 text-white" />
                   </div>
                   Student Reviews
@@ -1677,7 +1212,7 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                       <p className="text-gray-600 mb-4">{review.content}</p>
 
                       <div className="flex items-center justify-between text-sm">
-                        <button className="flex items-center gap-2 text-gray-500 hover:text-jirs-blue transition-colors">
+                        <button className="flex items-center gap-2 text-gray-500 hover:text-collegium-blue transition-colors">
                           <ThumbsUp className="w-4 h-4" />
                           Helpful ({review.helpful})
                         </button>
@@ -1693,10 +1228,66 @@ export function CollegeDetailPage() {              <div className="text-xs text-
               </div>
             </section>
 
+            {/* Q&A Section */}
+            <section id="qna" className="scroll-mt-32">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
+                    <MessageSquare className="w-5 h-5 text-white" />
+                  </div>
+                  Questions & Answers
+                </h2>
+                <Button variant="outline">Ask a Question</Button>
+              </div>
+
+              <div className="space-y-4">
+                {collegeData.qna.map((item) => (
+                  <Card key={item.id}>
+                    <CardContent className="p-6">
+                      <h4 className="font-semibold text-gray-900 mb-2">Q: {item.question}</h4>
+                      <p className="text-gray-600 mb-3 pl-4 border-l-2 border-collegium-blue">{item.answer}</p>
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <span>Answered by <strong>{item.author}</strong> &middot; {item.date}</span>
+                        <button className="flex items-center gap-1 hover:text-collegium-blue transition-colors">
+                          <ThumbsUp className="w-3.5 h-3.5" />
+                          {item.votes}
+                        </button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
+
+            {/* Related News */}
+            <Card className="mt-12">
+              <CardContent className="p-6">
+                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-collegium-blue" />
+                  Latest News about {collegeData.shortName}
+                </h3>
+                <div className="space-y-3">
+                  {collegeData.relatedNews.map((article) => (
+                    <Link
+                      key={article.id}
+                      href={`/news/${article.id}`}
+                      className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                    >
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-900 group-hover:text-collegium-blue transition-colors">{article.title}</div>
+                        <div className="text-xs text-gray-500 mt-1">{article.date} &middot; {article.category}</div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-collegium-blue" />
+                    </Link>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Gallery Section */}
             <section id="gallery" className="scroll-mt-32">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                   <Camera className="w-5 h-5 text-white" />
                 </div>
                 Campus Gallery
@@ -1730,7 +1321,7 @@ export function CollegeDetailPage() {              <div className="text-xs text-
             {/* Facilities Section */}
             <section id="facilities" className="scroll-mt-32">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-jirs-blue rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-collegium-blue rounded-xl flex items-center justify-center">
                   <Building2 className="w-5 h-5 text-white" />
                 </div>
                 Campus Facilities
@@ -1766,17 +1357,17 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-collegium-blue/20 focus:border-collegium-blue transition-all"
                   />
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-collegium-blue/20 focus:border-collegium-blue transition-all"
                   />
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-collegium-blue/20 focus:border-collegium-blue transition-all"
                   />
                   <Button className="w-full">Get Expert Counselling</Button>
                 </form>
@@ -1792,19 +1383,19 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                 <div className="space-y-4">
                   <a
                     href={`tel:${collegeData.phone}`}
-                    className="flex items-center gap-3 text-gray-600 hover:text-jirs-blue transition-colors"
+                    className="flex items-center gap-3 text-gray-600 hover:text-collegium-blue transition-colors"
                   >
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-jirs-blue" />
+                      <Phone className="w-5 h-5 text-collegium-blue" />
                     </div>
                     <span>{collegeData.phone}</span>
                   </a>
                   <a
                     href={`mailto:${collegeData.email}`}
-                    className="flex items-center gap-3 text-gray-600 hover:text-jirs-blue transition-colors"
+                    className="flex items-center gap-3 text-gray-600 hover:text-collegium-blue transition-colors"
                   >
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-jirs-blue" />
+                      <Mail className="w-5 h-5 text-collegium-blue" />
                     </div>
                     <span className="truncate">{collegeData.email}</span>
                   </a>
@@ -1812,10 +1403,10 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                     href={collegeData.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-gray-600 hover:text-jirs-blue transition-colors"
+                    className="flex items-center gap-3 text-gray-600 hover:text-collegium-blue transition-colors"
                   >
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-                      <Globe className="w-5 h-5 text-jirs-blue" />
+                      <Globe className="w-5 h-5 text-collegium-blue" />
                     </div>
                     <span className="flex items-center gap-1">
                       Visit Website
@@ -1824,7 +1415,7 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                   </a>
                   <div className="flex items-start gap-3 text-gray-600">
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-jirs-blue" />
+                      <MapPin className="w-5 h-5 text-collegium-blue" />
                     </div>
                     <span>{collegeData.address}</span>
                   </div>
@@ -1839,22 +1430,25 @@ export function CollegeDetailPage() {              <div className="text-xs text-
                   Similar Colleges
                 </h3>
                 <div className="space-y-3">
-                  {["IIT Delhi", "IIT Madras", "IIT Kanpur", "BITS Pilani"].map(
-                    (college) => (
-                      <Link
-                        key={college}
-                        href="#"
-                        className="block p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
-                      >
-                        <div className="font-medium text-gray-900">
-                          {college}
-                        </div>
-                        <div className="text-sm text-jirs-blue">
-                          View Details →
-                        </div>
-                      </Link>
-                    )
-                  )}
+                  {[
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "IIT Kanpur",
+                    "BITS Pilani",
+                  ].map((college) => (
+                    <Link
+                      key={college}
+                      href="#"
+                      className="block p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                    >
+                      <div className="font-medium text-gray-900">
+                        {college}
+                      </div>
+                      <div className="text-sm text-collegium-blue">
+                        View Details →
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -1866,11 +1460,24 @@ export function CollegeDetailPage() {              <div className="text-xs text-
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-jirs-blue text-white rounded-full shadow-lg hover:bg-blue-800 transition-colors flex items-center justify-center z-50"
+          className="fixed bottom-8 right-8 w-12 h-12 bg-collegium-blue text-white rounded-full shadow-lg hover:bg-blue-800 transition-colors flex items-center justify-center z-50"
         >
           <ChevronUp className="w-6 h-6" />
         </button>
       )}
+
+      {/* Modals */}
+      <ApplyNowModal
+        isOpen={isApplyModalOpen}
+        onClose={() => { setIsApplyModalOpen(false); setApplyCourseName(undefined); }}
+        collegeName={collegeData.name}
+        courseName={applyCourseName}
+      />
+      <BrochureDownloadModal
+        isOpen={isBrochureModalOpen}
+        onClose={() => setIsBrochureModalOpen(false)}
+        collegeName={collegeData.name}
+      />
     </div>
   );
 }

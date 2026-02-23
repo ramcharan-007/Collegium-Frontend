@@ -253,7 +253,7 @@ export function CompareColleges() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-jirs-blue text-white py-8">
+      <div className="bg-collegium-blue text-white py-8">
         <div className="container">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">
             Compare Colleges
@@ -308,7 +308,7 @@ export function CompareColleges() {
                 ) : (
                   <button
                     onClick={() => setShowSearch(true)}
-                    className="w-full h-full flex flex-col items-center justify-center gap-3 text-gray-400 hover:text-jirs-blue hover:border-jirs-blue border-2 border-dashed border-gray-200 rounded-lg transition-colors min-h-48"
+                    className="w-full h-full flex flex-col items-center justify-center gap-3 text-gray-400 hover:text-collegium-blue hover:border-collegium-blue border-2 border-dashed border-gray-200 rounded-lg transition-colors min-h-48"
                   >
                     <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
                       <Plus className="w-6 h-6" />

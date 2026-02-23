@@ -63,11 +63,11 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
       <div className="bg-white border-b">
         <div className="container py-4">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-jirs-blue">
+            <Link href="/" className="hover:text-collegium-blue">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/courses" className="hover:text-jirs-blue">
+            <Link href="/courses" className="hover:text-collegium-blue">
               Courses
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -77,7 +77,7 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
       </div>
 
       {/* Hero */}
-      <section className="bg-jirs-blue text-white py-10">
+      <section className="bg-collegium-blue text-white py-10">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <div className="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center text-4xl">
@@ -108,7 +108,7 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
             <div className="flex flex-col gap-3">
               <Button
                 size="lg"
-                className="bg-jirs-yellow text-jirs-blue hover:bg-yellow-400"
+                className="bg-collegium-yellow text-collegium-blue hover:bg-yellow-400"
               >
                 Get Free Counselling
               </Button>
@@ -129,28 +129,28 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
         <div className="container py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <IndianRupee className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <IndianRupee className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {formatCurrency(course.avgFees)}
               </div>
               <div className="text-sm text-gray-500">Average Fees</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <Building2 className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <Building2 className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {formatNumber(course.colleges)}+
               </div>
               <div className="text-sm text-gray-500">Colleges</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <Clock className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <Clock className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {course.duration}
               </div>
               <div className="text-sm text-gray-500">Duration</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <Briefcase className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <Briefcase className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {course.careers.length}+
               </div>
@@ -243,9 +243,9 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
                       <Link
                         key={exam.slug}
                         href={`/exams/${exam.slug}`}
-                        className="p-4 bg-gray-50 rounded-xl text-center hover:bg-blue-50 hover:border-jirs-blue border border-transparent transition-colors"
+                        className="p-4 bg-gray-50 rounded-xl text-center hover:bg-blue-50 hover:border-collegium-blue border border-transparent transition-colors"
                       >
-                        <FileText className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+                        <FileText className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
                         <span className="font-medium text-gray-900">
                           {exam.name}
                         </span>
@@ -312,7 +312,7 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
                     {course.careers.map((career) => (
                       <div key={career.title} className="p-4 border rounded-xl">
                         <div className="flex items-center gap-3 mb-2">
-                          <Briefcase className="w-5 h-5 text-jirs-blue" />
+                          <Briefcase className="w-5 h-5 text-collegium-blue" />
                           <h3 className="font-semibold text-gray-900">
                             {career.title}
                           </h3>
@@ -337,9 +337,9 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
                       <Link
                         key={college.slug}
                         href={`/college/${college.slug}`}
-                        className="flex items-center gap-4 p-4 border rounded-xl hover:border-jirs-blue hover:bg-blue-50/50 transition-colors"
+                        className="flex items-center gap-4 p-4 border rounded-xl hover:border-collegium-blue hover:bg-blue-50/50 transition-colors"
                       >
-                        <div className="w-8 h-8 rounded-full bg-jirs-blue text-white flex items-center justify-center font-bold">
+                        <div className="w-8 h-8 rounded-full bg-collegium-blue text-white flex items-center justify-center font-bold">
                           {index + 1}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -380,12 +380,12 @@ export function CourseDetailPage({ course }: CourseDetailProps) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* CTA Card */}
-            <Card className="p-6 bg-jirs-blue text-white">
+            <Card className="p-6 bg-collegium-blue text-white">
               <h3 className="text-lg font-bold mb-2">Need Guidance?</h3>
               <p className="text-blue-200 text-sm mb-4">
                 Get personalized counselling for {course.name} admissions
               </p>
-              <Button className="w-full bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+              <Button className="w-full bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                 Get Free Counselling
               </Button>
             </Card>

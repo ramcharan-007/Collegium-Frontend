@@ -312,7 +312,7 @@ function CollegeRow({
           className={cn(
             "inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold",
             college.rank <= 3
-              ? "bg-jirs-yellow text-jirs-blue"
+              ? "bg-collegium-yellow text-collegium-blue"
               : "bg-gray-100 text-gray-600",
           )}
         >
@@ -322,7 +322,7 @@ function CollegeRow({
 
       {/* College Info */}
       <div className="col-span-5 lg:col-span-4">
-        <h4 className="font-semibold text-gray-900 group-hover:text-jirs-blue transition-colors truncate">
+        <h4 className="font-semibold text-gray-900 group-hover:text-collegium-blue transition-colors truncate">
           {college.shortName}
         </h4>
         <div className="flex items-center gap-1 text-sm text-gray-500">
@@ -364,7 +364,7 @@ function CollegeRow({
 
       {/* Arrow */}
       <div className="col-span-1 text-right">
-        <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-jirs-blue transition-colors inline-block" />
+        <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-collegium-blue transition-colors inline-block" />
       </div>
     </Link>
   );
@@ -426,7 +426,7 @@ export function TopCollegesTable() {
               <div className="text-center mt-6">
                 <Link
                   href={`/${tab.value}-colleges`}
-                  className="inline-flex items-center gap-1 text-jirs-blue font-medium hover:underline"
+                  className="inline-flex items-center gap-1 text-collegium-blue font-medium hover:underline"
                 >
                   View all {tab.label} colleges
                   <ArrowUpRight className="w-4 h-4" />

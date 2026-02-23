@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Collegium",
+  description: "Read Collegium's privacy policy to understand how we collect, use, and protect your personal information.",
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-gray-50">

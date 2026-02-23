@@ -45,7 +45,7 @@ const Avatar = React.forwardRef<
       alt={alt}
       className="aspect-square h-full w-full object-cover"
     />
-    <AvatarPrimitive.Fallback className="flex h-full w-full items-center justify-center rounded-full bg-jirs-blue text-white font-medium">
+    <AvatarPrimitive.Fallback className="flex h-full w-full items-center justify-center rounded-full bg-collegium-blue text-white font-medium">
       {fallback || (alt ? getInitials(alt) : "?")}
     </AvatarPrimitive.Fallback>
   </AvatarPrimitive.Root>

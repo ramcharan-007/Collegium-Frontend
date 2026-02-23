@@ -107,11 +107,11 @@ function ExamCard({ exam }: { exam: Exam }) {
   return (
     <Link
       href={`/exams/${exam.slug}`}
-      className="group block bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-jirs-blue/30 transition-all"
+      className="group block bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-collegium-blue/30 transition-all"
     >
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 group-hover:text-jirs-blue transition-colors">
+          <h3 className="text-lg font-bold text-gray-900 group-hover:text-collegium-blue transition-colors">
             {exam.name}
           </h3>
           <p className="text-sm text-gray-500 truncate max-w-[200px]">
@@ -140,7 +140,7 @@ function ExamCard({ exam }: { exam: Exam }) {
         <span className="text-sm text-gray-500">
           {exam.collegesAccepting.toLocaleString()} colleges accepting
         </span>
-        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-jirs-blue group-hover:translate-x-1 transition-all" />
+        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-collegium-blue group-hover:translate-x-1 transition-all" />
       </div>
     </Link>
   );
@@ -162,7 +162,7 @@ export function TopExams() {
           </div>
           <Link
             href="/exams"
-            className="hidden sm:flex items-center gap-1 text-jirs-blue font-medium hover:underline"
+            className="hidden sm:flex items-center gap-1 text-collegium-blue font-medium hover:underline"
           >
             View all exams
             <ArrowRight className="w-4 h-4" />
@@ -180,7 +180,7 @@ export function TopExams() {
         <div className="mt-8 text-center sm:hidden">
           <Link
             href="/exams"
-            className="inline-flex items-center gap-1 text-jirs-blue font-medium"
+            className="inline-flex items-center gap-1 text-collegium-blue font-medium"
           >
             View all exams
             <ArrowRight className="w-4 h-4" />

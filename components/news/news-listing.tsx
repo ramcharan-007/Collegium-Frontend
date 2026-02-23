@@ -176,7 +176,7 @@ export function NewsListing() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-jirs-blue text-white py-10">
+      <section className="bg-collegium-blue text-white py-10">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
@@ -212,7 +212,7 @@ export function NewsListing() {
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                   selectedCategory === category
-                    ? "bg-jirs-blue text-white"
+                    ? "bg-collegium-blue text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200",
                 )}
               >
@@ -231,7 +231,7 @@ export function NewsListing() {
             {selectedCategory === "All" && searchQuery === "" && (
               <div className="space-y-6">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-jirs-yellow" />
+                  <TrendingUp className="w-5 h-5 text-collegium-yellow" />
                   Featured Stories
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -245,13 +245,13 @@ export function NewsListing() {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                           <div className="absolute top-3 left-3">
-                            <Badge className="bg-jirs-yellow text-jirs-blue">
+                            <Badge className="bg-collegium-yellow text-collegium-blue">
                               {article.category}
                             </Badge>
                           </div>
                         </div>
                         <div className="p-4">
-                          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-jirs-blue transition-colors">
+                          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-collegium-blue transition-colors">
                             {article.title}
                           </h3>
                           <p className="text-sm text-gray-600 mb-3 line-clamp-2">
@@ -288,7 +288,7 @@ export function NewsListing() {
             {/* All Articles */}
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-jirs-blue" />
+                <BookOpen className="w-5 h-5 text-collegium-blue" />
                 {selectedCategory === "All" ? "Latest News" : selectedCategory}
               </h2>
               <div className="space-y-4">
@@ -307,7 +307,7 @@ export function NewsListing() {
                           <Badge variant="secondary" size="sm" className="mb-2">
                             {article.category}
                           </Badge>
-                          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-jirs-blue transition-colors">
+                          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-collegium-blue transition-colors">
                             {article.title}
                           </h3>
                           <p className="text-sm text-gray-600 mb-3 line-clamp-2 hidden sm:block">
@@ -357,7 +357,7 @@ export function NewsListing() {
             {/* Trending */}
             <Card className="p-6">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-jirs-yellow" />
+                <TrendingUp className="w-5 h-5 text-collegium-yellow" />
                 Trending Now
               </h3>
               <div className="space-y-4">
@@ -367,11 +367,11 @@ export function NewsListing() {
                     href={`/news/${article.slug}`}
                     className="flex items-start gap-3 group"
                   >
-                    <span className="text-2xl font-bold text-gray-200 group-hover:text-jirs-blue transition-colors">
+                    <span className="text-2xl font-bold text-gray-200 group-hover:text-collegium-blue transition-colors">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-jirs-blue transition-colors">
+                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-collegium-blue transition-colors">
                         {article.title}
                       </h4>
                       <p className="text-xs text-gray-500 mt-1">
@@ -386,7 +386,7 @@ export function NewsListing() {
             {/* Tags */}
             <Card className="p-6">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <Tag className="w-5 h-5 text-jirs-blue" />
+                <Tag className="w-5 h-5 text-collegium-blue" />
                 Popular Tags
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -405,7 +405,7 @@ export function NewsListing() {
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="cursor-pointer hover:bg-jirs-blue hover:text-white"
+                    className="cursor-pointer hover:bg-collegium-blue hover:text-white"
                   >
                     {tag}
                   </Badge>
@@ -414,7 +414,7 @@ export function NewsListing() {
             </Card>
 
             {/* Newsletter */}
-            <Card className="p-6 bg-jirs-blue text-white">
+            <Card className="p-6 bg-collegium-blue text-white">
               <h3 className="font-bold mb-2">Stay Updated</h3>
               <p className="text-sm text-blue-200 mb-4">
                 Get the latest education news delivered to your inbox
@@ -423,7 +423,7 @@ export function NewsListing() {
                 placeholder="Enter your email"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60 mb-3"
               />
-              <Button className="w-full bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+              <Button className="w-full bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                 Subscribe
               </Button>
             </Card>

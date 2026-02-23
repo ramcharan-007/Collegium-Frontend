@@ -94,28 +94,28 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
         <div className="container py-6">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <Building2 className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <Building2 className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {formatNumber(country.universities)}
               </div>
               <div className="text-sm text-gray-500">Universities</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <BookOpen className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <BookOpen className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {formatNumber(country.courses)}
               </div>
               <div className="text-sm text-gray-500">Courses</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <DollarSign className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <DollarSign className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {country.avgCost}
               </div>
               <div className="text-sm text-gray-500">Avg. Tuition/Year</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-xl">
-              <Home className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+              <Home className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
               <div className="text-xl font-bold text-gray-900">
                 {country.livingCost}
               </div>
@@ -173,7 +173,7 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                         key={intake.name}
                         className="p-4 bg-gray-50 rounded-xl text-center"
                       >
-                        <Calendar className="w-6 h-6 mx-auto text-jirs-blue mb-2" />
+                        <Calendar className="w-6 h-6 mx-auto text-collegium-blue mb-2" />
                         <h3 className="font-semibold text-gray-900">
                           {intake.name}
                         </h3>
@@ -206,9 +206,9 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                     {country.topCities.map((city) => (
                       <div
                         key={city.name}
-                        className="text-center p-4 border rounded-xl hover:border-jirs-blue transition-colors cursor-pointer"
+                        className="text-center p-4 border rounded-xl hover:border-collegium-blue transition-colors cursor-pointer"
                       >
-                        <MapPin className="w-5 h-5 mx-auto text-jirs-blue mb-2" />
+                        <MapPin className="w-5 h-5 mx-auto text-collegium-blue mb-2" />
                         <h3 className="font-medium text-gray-900">
                           {city.name}
                         </h3>
@@ -260,7 +260,7 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                   </h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                      <Briefcase className="w-6 h-6 text-jirs-blue shrink-0" />
+                      <Briefcase className="w-6 h-6 text-collegium-blue shrink-0" />
                       <div>
                         <h3 className="font-semibold text-gray-900">
                           Post-Study Work Permit
@@ -269,7 +269,7 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                       </div>
                     </div>
                     <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                      <Clock className="w-6 h-6 text-jirs-blue shrink-0" />
+                      <Clock className="w-6 h-6 text-collegium-blue shrink-0" />
                       <div>
                         <h3 className="font-semibold text-gray-900">
                           Part-Time Work During Study
@@ -304,7 +304,7 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                         <span className="text-gray-600">
                           Average Tuition Fee (per year)
                         </span>
-                        <span className="font-bold text-jirs-blue">
+                        <span className="font-bold text-collegium-blue">
                           {country.avgCost}
                         </span>
                       </div>
@@ -314,7 +314,7 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
                         <span className="text-gray-600">
                           Living Cost (per month)
                         </span>
-                        <span className="font-bold text-jirs-blue">
+                        <span className="font-bold text-collegium-blue">
                           {country.livingCost}
                         </span>
                       </div>
@@ -328,13 +328,13 @@ export function CountryDetailPage({ country }: CountryDetailProps) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* CTA Card */}
-            <Card className="p-6 bg-jirs-blue text-white">
+            <Card className="p-6 bg-collegium-blue text-white">
               <h3 className="text-lg font-bold mb-2">Get Free Counselling</h3>
               <p className="text-blue-200 text-sm mb-4">
                 Speak with our expert counselors to plan your education in{" "}
                 {country.name}
               </p>
-              <Button className="w-full bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+              <Button className="w-full bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                 Book Free Session
               </Button>
             </Card>

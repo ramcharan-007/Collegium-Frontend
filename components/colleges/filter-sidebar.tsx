@@ -178,7 +178,7 @@ function FilterSection({
                 type="checkbox"
                 checked={selectedOptions.includes(option.id)}
                 onChange={() => onOptionChange(option.id)}
-                className="w-4 h-4 rounded border-gray-300 text-jirs-blue focus:ring-jirs-blue"
+                className="w-4 h-4 rounded border-gray-300 text-collegium-blue focus:ring-collegium-blue"
               />
               <span className="flex-1 text-sm text-gray-700 group-hover:text-gray-900">
                 {option.label}
@@ -192,7 +192,7 @@ function FilterSection({
           {hasMore && (
             <button
               onClick={() => setShowAll(!showAll)}
-              className="text-sm text-jirs-blue hover:underline mt-2"
+              className="text-sm text-collegium-blue hover:underline mt-2"
             >
               {showAll ? "Show Less" : `+${group.options.length - 5} More`}
             </button>
@@ -232,7 +232,7 @@ export function FilterSidebar({
         {totalFilters > 0 && (
           <button
             onClick={onClearAll}
-            className="text-sm text-jirs-blue hover:underline flex items-center gap-1"
+            className="text-sm text-collegium-blue hover:underline flex items-center gap-1"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Clear All

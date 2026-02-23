@@ -71,11 +71,11 @@ export function NewsArticleDetail({
       <div className="bg-white border-b">
         <div className="container py-4">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-jirs-blue">
+            <Link href="/" className="hover:text-collegium-blue">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/news" className="hover:text-jirs-blue">
+            <Link href="/news" className="hover:text-collegium-blue">
               News
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -194,7 +194,7 @@ export function NewsArticleDetail({
                       className={cn(
                         "p-2 rounded-lg transition-colors",
                         isBookmarked
-                          ? "bg-jirs-yellow text-jirs-blue"
+                          ? "bg-collegium-yellow text-collegium-blue"
                           : "hover:bg-gray-100",
                       )}
                     >
@@ -276,7 +276,7 @@ export function NewsArticleDetail({
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-jirs-blue transition-colors">
+                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-collegium-blue transition-colors">
                         {related.title}
                       </h4>
                       <p className="text-xs text-gray-500 mt-1">
@@ -289,12 +289,12 @@ export function NewsArticleDetail({
             </Card>
 
             {/* CTA */}
-            <Card className="p-6 bg-jirs-blue text-white">
+            <Card className="p-6 bg-collegium-blue text-white">
               <h3 className="font-bold mb-2">Need Guidance?</h3>
               <p className="text-sm text-blue-200 mb-4">
                 Get personalized counselling for college admissions
               </p>
-              <Button className="w-full bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+              <Button className="w-full bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                 Get Free Counselling
               </Button>
             </Card>

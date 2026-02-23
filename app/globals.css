@@ -2,15 +2,15 @@
 
 /* ============================================
    COLLEGIUM DESIGN SYSTEM
-   Based on JIRS Visual Identity Guidelines
+   Based on Collegium Visual Identity Guidelines
    ============================================ */
 
 :root {
-  /* ========== PRIMARY COLORS (JIRS Brand) ========== */
-  --jirs-blue: #001c54;
-  --jirs-blue-rgb: 0, 28, 84;
-  --jirs-yellow: #f8c300;
-  --jirs-yellow-rgb: 248, 195, 0;
+  /* ========== PRIMARY COLORS (Collegium Brand) ========== */
+  --collegium-blue: #001c54;
+  --collegium-blue-rgb: 0, 28, 84;
+  --collegium-yellow: #f8c300;
+  --collegium-yellow-rgb: 248, 195, 0;
 
   /* ========== EXTENDED BLUE PALETTE ========== */
   --blue-50: #e6ebf3;
@@ -70,21 +70,21 @@
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
   --bg-tertiary: #f3f4f6;
-  --bg-inverse: var(--jirs-blue);
+  --bg-inverse: var(--collegium-blue);
 
   /* ========== TEXT COLORS ========== */
   --text-primary: #111827;
   --text-secondary: #4b5563;
   --text-tertiary: #9ca3af;
   --text-inverse: #ffffff;
-  --text-link: var(--jirs-blue);
+  --text-link: var(--collegium-blue);
   --text-link-hover: var(--blue-700);
 
   /* ========== BORDER COLORS ========== */
   --border-light: #e5e7eb;
   --border-default: #d1d5db;
   --border-dark: #9ca3af;
-  --border-focus: var(--jirs-blue);
+  --border-focus: var(--collegium-blue);
 
   /* ========== SHADOWS ========== */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -172,8 +172,8 @@
 
 /* ========== TAILWIND THEME INLINE ========== */
 @theme inline {
-  --color-jirs-blue: var(--jirs-blue);
-  --color-jirs-yellow: var(--jirs-yellow);
+  --color-collegium-blue: var(--collegium-blue);
+  --color-collegium-yellow: var(--collegium-yellow);
 
   --color-blue-50: var(--blue-50);
   --color-blue-100: var(--blue-100);
@@ -248,8 +248,8 @@ body {
 
 /* ========== SELECTION STYLES ========== */
 ::selection {
-  background-color: rgba(var(--jirs-blue-rgb), 0.2);
-  color: var(--jirs-blue);
+  background-color: rgba(var(--collegium-blue-rgb), 0.2);
+  color: var(--collegium-blue);
 }
 
 /* ========== CONTAINER ========== */
@@ -393,7 +393,7 @@ body {
 }
 
 .badge-primary {
-  background-color: var(--jirs-blue);
+  background-color: var(--collegium-blue);
   color: var(--text-inverse);
 }
 
@@ -418,15 +418,15 @@ body {
 }
 
 .badge-gold {
-  background-color: var(--jirs-yellow);
-  color: var(--jirs-blue);
+  background-color: var(--collegium-yellow);
+  color: var(--collegium-blue);
 }
 
 /* ========== GRADIENT BACKGROUNDS ========== */
 .bg-gradient-primary {
   background: linear-gradient(
     135deg,
-    var(--jirs-blue) 0%,
+    var(--collegium-blue) 0%,
     var(--blue-500) 100%
   );
 }
@@ -434,7 +434,7 @@ body {
 .bg-gradient-gold {
   background: linear-gradient(
     135deg,
-    var(--jirs-yellow) 0%,
+    var(--collegium-yellow) 0%,
     var(--yellow-500) 100%
   );
 }
@@ -500,8 +500,8 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: var(--jirs-blue);
-  box-shadow: 0 0 0 3px rgba(var(--jirs-blue-rgb), 0.1);
+  border-color: var(--collegium-blue);
+  box-shadow: 0 0 0 3px rgba(var(--collegium-blue-rgb), 0.1);
 }
 
 input::placeholder,

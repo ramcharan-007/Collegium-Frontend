@@ -9,15 +9,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-jirs-blue text-white shadow-sm hover:bg-blue-700 focus-visible:ring-jirs-blue",
+          "bg-collegium-blue text-white shadow-sm hover:bg-blue-700 focus-visible:ring-collegium-blue",
         secondary:
           "bg-gray-100 text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:ring-gray-400",
         outline:
-          "border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50 hover:border-gray-400 focus-visible:ring-jirs-blue",
+          "border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50 hover:border-gray-400 focus-visible:ring-collegium-blue",
         ghost:
           "text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus-visible:ring-gray-400",
-        link: "text-jirs-blue underline-offset-4 hover:underline focus-visible:ring-jirs-blue",
-        gold: "bg-jirs-yellow text-jirs-blue shadow-sm hover:bg-yellow-500 focus-visible:ring-jirs-yellow",
+        link: "text-collegium-blue underline-offset-4 hover:underline focus-visible:ring-collegium-blue",
+        gold: "bg-collegium-yellow text-collegium-blue shadow-sm hover:bg-yellow-500 focus-visible:ring-collegium-yellow",
         destructive:
           "bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:ring-red-500",
         success:

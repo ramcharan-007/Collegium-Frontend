@@ -213,21 +213,21 @@ export function StudyAbroadLanding() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-jirs-blue via-blue-800 to-blue-900 text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-collegium-blue via-blue-800 to-blue-900 text-white py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-jirs-yellow rounded-full blur-3xl" />
+          <div className="absolute top-10 left-10 w-72 h-72 bg-collegium-yellow rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
         </div>
 
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="bg-jirs-yellow text-jirs-blue mb-6">
+            <Badge className="bg-collegium-yellow text-collegium-blue mb-6">
               <Plane className="w-4 h-4 mr-2" />
               Study Abroad
             </Badge>
             <h1 className="text-3xl md:text-5xl font-bold mb-6">
               Your Gateway to{" "}
-              <span className="text-jirs-yellow">Global Education</span>
+              <span className="text-collegium-yellow">Global Education</span>
             </h1>
             <p className="text-lg md:text-xl text-blue-200 mb-8">
               Explore 50,000+ courses across 6+ countries. Get expert guidance
@@ -255,25 +255,25 @@ export function StudyAbroadLanding() {
             {/* Quick Stats */}
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-10">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-jirs-yellow">
+                <div className="text-2xl md:text-3xl font-bold text-collegium-yellow">
                   50,000+
                 </div>
                 <div className="text-sm text-blue-200">Courses</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-jirs-yellow">
+                <div className="text-2xl md:text-3xl font-bold text-collegium-yellow">
                   5,000+
                 </div>
                 <div className="text-sm text-blue-200">Universities</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-jirs-yellow">
+                <div className="text-2xl md:text-3xl font-bold text-collegium-yellow">
                   25+
                 </div>
                 <div className="text-sm text-blue-200">Countries</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-jirs-yellow">
+                <div className="text-2xl md:text-3xl font-bold text-collegium-yellow">
                   10,000+
                 </div>
                 <div className="text-sm text-blue-200">Students Placed</div>
@@ -324,7 +324,7 @@ export function StudyAbroadLanding() {
                   <div className="p-4">
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div className="text-center p-2 bg-gray-50 rounded-lg">
-                        <Building2 className="w-4 h-4 mx-auto text-jirs-blue mb-1" />
+                        <Building2 className="w-4 h-4 mx-auto text-collegium-blue mb-1" />
                         <div className="text-lg font-bold text-gray-900">
                           {formatNumber(country.universities)}
                         </div>
@@ -333,7 +333,7 @@ export function StudyAbroadLanding() {
                         </div>
                       </div>
                       <div className="text-center p-2 bg-gray-50 rounded-lg">
-                        <BookOpen className="w-4 h-4 mx-auto text-jirs-blue mb-1" />
+                        <BookOpen className="w-4 h-4 mx-auto text-collegium-blue mb-1" />
                         <div className="text-lg font-bold text-gray-900">
                           {formatNumber(country.courses)}
                         </div>
@@ -349,7 +349,7 @@ export function StudyAbroadLanding() {
                     </div>
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">Avg. Cost/Year</span>
-                      <span className="font-semibold text-jirs-blue">
+                      <span className="font-semibold text-collegium-blue">
                         {country.avgCost}
                       </span>
                     </div>
@@ -392,7 +392,7 @@ export function StudyAbroadLanding() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-3 left-3">
-                    <Badge className="bg-jirs-yellow text-jirs-blue font-bold">
+                    <Badge className="bg-collegium-yellow text-collegium-blue font-bold">
                       #{uni.ranking} QS
                     </Badge>
                   </div>
@@ -422,7 +422,7 @@ export function StudyAbroadLanding() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-jirs-blue text-white">
+      <section className="py-16 bg-collegium-blue text-white">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
@@ -463,7 +463,7 @@ export function StudyAbroadLanding() {
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
                   {step.icon}
                 </div>
-                <div className="w-8 h-8 rounded-full bg-jirs-yellow text-jirs-blue font-bold flex items-center justify-center mx-auto mb-4">
+                <div className="w-8 h-8 rounded-full bg-collegium-yellow text-collegium-blue font-bold flex items-center justify-center mx-auto mb-4">
                   {index + 1}
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
@@ -529,23 +529,23 @@ export function StudyAbroadLanding() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-jirs-yellow to-yellow-400">
+      <section className="py-16 bg-gradient-to-r from-collegium-yellow to-yellow-400">
         <div className="container text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-jirs-blue mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-collegium-blue mb-4">
             Ready to Start Your Global Education Journey?
           </h2>
-          <p className="text-jirs-blue/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-collegium-blue/80 mb-8 max-w-2xl mx-auto">
             Get a free profile evaluation and personalized university
             recommendations from our expert counselors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-jirs-blue hover:bg-blue-900">
+            <Button size="lg" className="bg-collegium-blue hover:bg-blue-900">
               Book Free Counselling
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-jirs-blue text-jirs-blue hover:bg-jirs-blue hover:text-white"
+              className="border-collegium-blue text-collegium-blue hover:bg-collegium-blue hover:text-white"
             >
               Explore Universities
             </Button>

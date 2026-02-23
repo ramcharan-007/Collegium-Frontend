@@ -242,7 +242,7 @@ export function CoursesListing() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-jirs-blue text-white py-10">
+      <section className="bg-collegium-blue text-white py-10">
         <div className="container">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">
             Explore Courses
@@ -276,7 +276,7 @@ export function CoursesListing() {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                     selectedLevel === level
-                      ? "bg-jirs-blue text-white"
+                      ? "bg-collegium-blue text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200",
                   )}
                 >
@@ -294,7 +294,7 @@ export function CoursesListing() {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                     selectedStream === stream
-                      ? "bg-jirs-yellow text-jirs-blue"
+                      ? "bg-collegium-yellow text-collegium-blue"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200",
                   )}
                 >
@@ -330,7 +330,7 @@ export function CoursesListing() {
                         {course.icon}
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900 group-hover:text-jirs-blue transition-colors">
+                        <h3 className="font-bold text-lg text-gray-900 group-hover:text-collegium-blue transition-colors">
                           {course.name}
                         </h3>
                         <p className="text-sm text-gray-500">
@@ -405,7 +405,7 @@ export function CoursesListing() {
                   <span className="text-sm text-gray-600">
                     {course.mode.join(", ")}
                   </span>
-                  <span className="text-sm text-jirs-blue font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-sm text-collegium-blue font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                     Explore <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>

@@ -35,7 +35,7 @@ export function CollegeCard({
     <div
       className={cn(
         "group bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-lg",
-        isComparing && "ring-2 ring-jirs-blue",
+        isComparing && "ring-2 ring-collegium-blue",
       )}
     >
       <div className={cn("p-4", isCompact ? "sm:p-4" : "sm:p-5")}>
@@ -45,7 +45,7 @@ export function CollegeCard({
           <div className="shrink-0">
             <div
               className={cn(
-                "bg-gray-100 rounded-lg flex items-center justify-center font-bold text-jirs-blue",
+                "bg-gray-100 rounded-lg flex items-center justify-center font-bold text-collegium-blue",
                 isCompact
                   ? "w-14 h-14 text-lg"
                   : "w-16 h-16 sm:w-20 sm:h-20 text-xl",
@@ -61,7 +61,7 @@ export function CollegeCard({
               <div>
                 <Link
                   href={`/college/${college.slug}`}
-                  className="font-bold text-gray-900 hover:text-jirs-blue transition-colors line-clamp-2"
+                  className="font-bold text-gray-900 hover:text-collegium-blue transition-colors line-clamp-2"
                 >
                   {college.name}
                 </Link>

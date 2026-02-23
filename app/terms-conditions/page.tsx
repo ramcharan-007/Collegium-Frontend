@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | Collegium",
+  description: "Read the terms and conditions for using the Collegium platform.",
+};
+
 export default function TermsConditionsPage() {
   return (
     <div className="min-h-screen bg-gray-50">

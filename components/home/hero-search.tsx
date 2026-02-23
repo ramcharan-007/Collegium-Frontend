@@ -25,18 +25,18 @@ export function HeroSearch() {
   const [isFocused, setIsFocused] = React.useState(false);
 
   return (
-    <section className="relative bg-gradient-to-br from-jirs-blue via-blue-600 to-blue-700 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-collegium-blue via-blue-600 to-blue-700 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-jirs-yellow rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-collegium-yellow rounded-full blur-3xl" />
       </div>
 
       <div className="container relative py-16 lg:py-24">
         <div className="max-w-3xl mx-auto text-center">
           {/* Headline */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            Find Your Perfect <span className="text-jirs-yellow">College</span>
+            Find Your Perfect <span className="text-collegium-yellow">College</span>
           </h1>
           <p className="text-lg text-blue-100 mb-8 max-w-xl mx-auto">
             Explore 25,000+ colleges, compare courses, check rankings, and make
@@ -48,7 +48,7 @@ export function HeroSearch() {
             <div
               className={cn(
                 "relative bg-white rounded-2xl shadow-xl transition-all duration-300",
-                isFocused && "ring-4 ring-jirs-yellow/30",
+                isFocused && "ring-4 ring-collegium-yellow/30",
               )}
             >
               <div className="flex items-center">
@@ -64,7 +64,7 @@ export function HeroSearch() {
                   placeholder="Search colleges, courses, exams..."
                   className="flex-1 px-4 py-4 lg:py-5 text-gray-900 placeholder:text-gray-400 bg-transparent border-0 focus:outline-none text-base lg:text-lg"
                 />
-                <button className="m-2 px-6 py-3 bg-jirs-blue text-white font-medium rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2">
+                <button className="m-2 px-6 py-3 bg-collegium-blue text-white font-medium rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2">
                   <span className="hidden sm:inline">Search</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>

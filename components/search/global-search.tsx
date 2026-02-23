@@ -187,11 +187,38 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             </kbd>
           </div>
 
+          {/* City Quick Filters */}
+          <div className="px-4 py-2 border-b border-gray-100 flex items-center gap-2 overflow-x-auto scrollbar-hide">
+            <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+            <span className="text-xs text-gray-500 shrink-0">In:</span>
+            {["All India", "Mumbai", "Delhi", "Bangalore", "Chennai", "Pune", "Hyderabad", "Kolkata"].map((city) => (
+              <button
+                key={city}
+                onClick={() => {
+                  if (city === "All India") {
+                    setQuery(query.replace(/\s+in\s+\w+$/i, ""));
+                  } else {
+                    const base = query.replace(/\s+in\s+\w+$/i, "");
+                    setQuery(`${base} in ${city}`);
+                  }
+                }}
+                className={cn(
+                  "px-3 py-1 text-xs rounded-full whitespace-nowrap transition-colors",
+                  query.toLowerCase().includes(city.toLowerCase())
+                    ? "bg-collegium-blue text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                )}
+              >
+                {city}
+              </button>
+            ))}
+          </div>
+
           {/* Content */}
           <div className="max-h-[60vh] overflow-y-auto">
             {isLoading ? (
               <div className="p-8 text-center text-gray-500">
-                <div className="inline-block w-6 h-6 border-2 border-jirs-blue border-t-transparent rounded-full animate-spin" />
+                <div className="inline-block w-6 h-6 border-2 border-collegium-blue border-t-transparent rounded-full animate-spin" />
                 <p className="mt-2">Searching...</p>
               </div>
             ) : query.length > 1 && results.length > 0 ? (
@@ -209,7 +236,7 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                       className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                     >
                       <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-jirs-blue" />
+                        <Icon className="w-5 h-5 text-collegium-blue" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-gray-900 truncate">
@@ -263,7 +290,7 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                         onClick={() => setQuery(item.term)}
                         className="flex items-center gap-3 w-full px-3 py-2 hover:bg-gray-50 rounded-lg transition-colors"
                       >
-                        <span className="w-6 h-6 bg-jirs-yellow/20 text-jirs-blue rounded-full flex items-center justify-center text-xs font-bold">
+                        <span className="w-6 h-6 bg-collegium-yellow/20 text-collegium-blue rounded-full flex items-center justify-center text-xs font-bold">
                           {index + 1}
                         </span>
                         <span className="flex-1 text-left text-gray-700">
@@ -285,8 +312,8 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                       onClick={onClose}
                       className="flex items-center gap-2 p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
                     >
-                      <Building2 className="w-5 h-5 text-jirs-blue" />
-                      <span className="text-sm font-medium text-jirs-blue">
+                      <Building2 className="w-5 h-5 text-collegium-blue" />
+                      <span className="text-sm font-medium text-collegium-blue">
                         Browse Colleges
                       </span>
                     </Link>

@@ -115,7 +115,7 @@ function CollegeCard({ college }: { college: FeaturedCollege }) {
       {/* Cover Image */}
       <div className="relative h-40 bg-gray-100 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-        <div className="absolute inset-0 bg-jirs-blue/90" />
+        <div className="absolute inset-0 bg-collegium-blue/90" />
 
         {/* Rankings Badge */}
         <div className="absolute top-3 left-3 z-20 flex gap-2">
@@ -256,10 +256,10 @@ export function FeaturedColleges() {
           <div className="flex-shrink-0 w-[300px] snap-start">
             <Link
               href="/colleges"
-              className="flex flex-col items-center justify-center h-full min-h-[380px] bg-white rounded-2xl border-2 border-dashed border-gray-300 hover:border-jirs-blue hover:bg-blue-50/30 transition-all"
+              className="flex flex-col items-center justify-center h-full min-h-[380px] bg-white rounded-2xl border-2 border-dashed border-gray-300 hover:border-collegium-blue hover:bg-blue-50/30 transition-all"
             >
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <ArrowRight className="w-8 h-8 text-jirs-blue" />
+                <ArrowRight className="w-8 h-8 text-collegium-blue" />
               </div>
               <span className="text-lg font-semibold text-gray-900">
                 View All Colleges

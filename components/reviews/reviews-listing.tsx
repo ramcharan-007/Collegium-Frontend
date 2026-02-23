@@ -255,7 +255,7 @@ export function ReviewsListing() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-jirs-blue text-white py-10">
+      <section className="bg-collegium-blue text-white py-10">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
@@ -269,7 +269,7 @@ export function ReviewsListing() {
             </div>
             <div className="flex gap-3">
               <Link href="/write-review">
-                <Button className="bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+                <Button className="bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                   Write a Review
                 </Button>
               </Link>
@@ -295,7 +295,7 @@ export function ReviewsListing() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-jirs-blue"
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-collegium-blue"
               >
                 <option value="helpful">Most Helpful</option>
                 <option value="recent">Most Recent</option>
@@ -325,7 +325,7 @@ export function ReviewsListing() {
                   <div className="flex-1 min-w-0">
                     <Link
                       href={`/college/${review.college.slug}`}
-                      className="font-semibold text-gray-900 hover:text-jirs-blue transition-colors line-clamp-1"
+                      className="font-semibold text-gray-900 hover:text-collegium-blue transition-colors line-clamp-1"
                     >
                       {review.college.name}
                     </Link>
@@ -381,7 +381,7 @@ export function ReviewsListing() {
                   <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-4 p-3 bg-gray-50 rounded-lg">
                     {ratingCategories.map((cat) => (
                       <div key={cat.key} className="text-center">
-                        <div className="text-lg font-bold text-jirs-blue">
+                        <div className="text-lg font-bold text-collegium-blue">
                           {review.rating[cat.key as keyof typeof review.rating]}
                         </div>
                         <div className="text-xs text-gray-500">{cat.label}</div>
@@ -427,7 +427,7 @@ export function ReviewsListing() {
 
                   {/* Actions */}
                   <div className="flex items-center justify-between pt-4 border-t">
-                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-jirs-blue transition-colors">
+                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-collegium-blue transition-colors">
                       <ThumbsUp className="w-4 h-4" />
                       Helpful ({review.helpful})
                     </button>
@@ -444,14 +444,14 @@ export function ReviewsListing() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Write Review CTA */}
-            <Card className="p-6 bg-jirs-blue text-white">
+            <Card className="p-6 bg-collegium-blue text-white">
               <Award className="w-10 h-10 mb-3" />
               <h3 className="font-bold text-lg mb-2">Share Your Experience</h3>
               <p className="text-sm text-blue-200 mb-4">
                 Help future students by writing an honest review of your college
               </p>
               <Link href="/write-review">
-                <Button className="w-full bg-jirs-yellow text-jirs-blue hover:bg-yellow-400">
+                <Button className="w-full bg-collegium-yellow text-collegium-blue hover:bg-yellow-400">
                   Write a Review
                 </Button>
               </Link>
@@ -460,7 +460,7 @@ export function ReviewsListing() {
             {/* Top Reviewed Colleges */}
             <Card className="p-6">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-jirs-yellow" />
+                <TrendingUp className="w-5 h-5 text-collegium-yellow" />
                 Most Reviewed Colleges
               </h3>
               <div className="space-y-4">

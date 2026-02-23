@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +17,11 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Collegium - India's Leading College Discovery Platform",
+  description: "Learn about Collegium - our mission to help students find their perfect college through rankings, reviews, and personalized recommendations.",
+};
 
 const stats = [
   { value: "50L+", label: "Students Helped" },

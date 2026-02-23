@@ -98,10 +98,10 @@ export function AdvancedFilters({
       {/* Header */}
       <div className="p-4 bg-gray-50 border-b flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-5 h-5 text-jirs-blue" />
+          <SlidersHorizontal className="w-5 h-5 text-collegium-blue" />
           <span className="font-semibold text-gray-900">Filters</span>
           {activeCount > 0 && (
-            <Badge size="sm" className="bg-jirs-blue">
+            <Badge size="sm" className="bg-collegium-blue">
               {activeCount}
             </Badge>
           )}
@@ -109,7 +109,7 @@ export function AdvancedFilters({
         {activeCount > 0 && (
           <button
             onClick={onReset}
-            className="text-sm text-jirs-blue hover:underline flex items-center gap-1"
+            className="text-sm text-collegium-blue hover:underline flex items-center gap-1"
           >
             <RotateCcw className="w-3 h-3" />
             Reset
@@ -175,7 +175,7 @@ export function AdvancedFilters({
                             className={cn(
                               "flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors",
                               isSelected
-                                ? "bg-blue-50 border border-jirs-blue"
+                                ? "bg-blue-50 border border-collegium-blue"
                                 : "hover:bg-gray-50 border border-transparent",
                             )}
                           >
@@ -186,7 +186,7 @@ export function AdvancedFilters({
                                   ? "rounded-full"
                                   : "rounded",
                                 isSelected
-                                  ? "bg-jirs-blue border-jirs-blue"
+                                  ? "bg-collegium-blue border-collegium-blue"
                                   : "border-gray-300",
                               )}
                             >
@@ -198,7 +198,7 @@ export function AdvancedFilters({
                               className={cn(
                                 "flex-1 text-sm",
                                 isSelected
-                                  ? "text-jirs-blue font-medium"
+                                  ? "text-collegium-blue font-medium"
                                   : "text-gray-700",
                               )}
                             >
@@ -218,7 +218,7 @@ export function AdvancedFilters({
                         <input
                           type="number"
                           placeholder="Min"
-                          className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-jirs-blue"
+                          className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegium-blue"
                           value={rangeValues[section.id]?.[0] || ""}
                           onChange={(e) =>
                             onRangeChange(section.id, [
@@ -231,7 +231,7 @@ export function AdvancedFilters({
                         <input
                           type="number"
                           placeholder="Max"
-                          className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-jirs-blue"
+                          className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegium-blue"
                           value={rangeValues[section.id]?.[1] || ""}
                           onChange={(e) =>
                             onRangeChange(section.id, [
@@ -245,7 +245,7 @@ export function AdvancedFilters({
                         type="range"
                         min={section.min}
                         max={section.max}
-                        className="w-full accent-jirs-blue"
+                        className="w-full accent-collegium-blue"
                         value={rangeValues[section.id]?.[1] || section.max}
                         onChange={(e) =>
                           onRangeChange(section.id, [
@@ -265,7 +265,7 @@ export function AdvancedFilters({
                             className={cn(
                               "flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors",
                               isSelected
-                                ? "bg-blue-50 border border-jirs-blue"
+                                ? "bg-blue-50 border border-collegium-blue"
                                 : "hover:bg-gray-50 border border-transparent",
                             )}
                             onClick={() =>
@@ -368,10 +368,10 @@ export function MobileFilterDrawer({
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
           <div className="flex items-center gap-2">
-            <SlidersHorizontal className="w-5 h-5 text-jirs-blue" />
+            <SlidersHorizontal className="w-5 h-5 text-collegium-blue" />
             <span className="font-semibold">Filters</span>
             {activeCount > 0 && (
-              <Badge size="sm" className="bg-jirs-blue">
+              <Badge size="sm" className="bg-collegium-blue">
                 {activeCount}
               </Badge>
             )}

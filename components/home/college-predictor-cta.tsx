@@ -36,10 +36,10 @@ export function CollegePredictorCTA() {
   const [category, setCategory] = React.useState("");
 
   return (
-    <section className="py-12 lg:py-16 bg-gradient-to-br from-jirs-blue to-blue-700 relative overflow-hidden">
+    <section className="py-12 lg:py-16 bg-gradient-to-br from-collegium-blue to-blue-700 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-jirs-yellow rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-collegium-yellow rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
       </div>
 
@@ -49,7 +49,7 @@ export function CollegePredictorCTA() {
             {/* Content */}
             <div className="text-white">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-                <BarChart3 className="w-5 h-5 text-jirs-yellow" />
+                <BarChart3 className="w-5 h-5 text-collegium-yellow" />
                 <span className="text-sm font-medium">College Predictor</span>
               </div>
 
@@ -66,7 +66,7 @@ export function CollegePredictorCTA() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calculator className="w-5 h-5 text-jirs-yellow" />
+                    <Calculator className="w-5 h-5 text-collegium-yellow" />
                   </div>
                   <div>
                     <h4 className="font-semibold">Accurate Predictions</h4>
@@ -77,7 +77,7 @@ export function CollegePredictorCTA() {
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <BarChart3 className="w-5 h-5 text-jirs-yellow" />
+                    <BarChart3 className="w-5 h-5 text-collegium-yellow" />
                   </div>
                   <div>
                     <h4 className="font-semibold">3500+ Colleges</h4>
@@ -125,7 +125,7 @@ export function CollegePredictorCTA() {
                     value={score}
                     onChange={(e) => setScore(e.target.value)}
                     placeholder="e.g., 95.5 percentile or Rank 15000"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jirs-blue/20 focus:border-jirs-blue transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-collegium-blue/20 focus:border-collegium-blue transition-all"
                   />
                 </div>
 
